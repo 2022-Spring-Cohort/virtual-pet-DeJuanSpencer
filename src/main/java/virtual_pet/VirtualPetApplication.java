@@ -15,8 +15,8 @@ private final Dog marchi = new Dog("Marchi", "brown", "squirrels", "steak",4, 45
         marchi.greeting();
     }
 
-    public void alive(){
-
+    public boolean alive(){
+return marchi.isAlive;
     }
 
 

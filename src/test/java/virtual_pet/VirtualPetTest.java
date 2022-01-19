@@ -27,8 +27,18 @@ public class VirtualPetTest {
 
 
         }
+    @Test
+    public void testAlive() {
+
+
+        VirtualPetApplication myTest = new VirtualPetApplication();
+
+        boolean result = myTest.alive();
+
+        assertEquals(true, result);
+    }
 
 
     }
 
-}
+
