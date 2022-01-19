@@ -15,7 +15,7 @@ public class VirtualPetTest {
 
         int result = myTest.tick;
 
-        assertEquals(30, result);
+        assertEquals(0, result);
     }
 
         @Test
