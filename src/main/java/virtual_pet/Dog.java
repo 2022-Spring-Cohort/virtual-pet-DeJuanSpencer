@@ -1,6 +1,7 @@
 package virtual_pet;
 
 public class Dog {
+
     private String name;
     private String furColor;
     private String favoriteToy;
@@ -8,9 +9,15 @@ public class Dog {
     private int age;
     private int weight;
     public String greeting;
-    public int tick;
-    boolean isAlive = true;
-    boolean wantsToStayWithYou = true;
+    public int tick = 0;
+    public boolean isAlive = true;
+    public boolean wantsToStayWithYou = true;
+    public boolean isHungry = false;
+    public int hungerLevel = 0;
+    public boolean isThirsty = false;
+    public int thirstLevel = 0;
+    public int boredomLevel = 0;
+    public boolean wantsToPlay = false;
 
 
     public Dog(String name, String furColor, String favoriteToy, String favoriteFood, int age, int weight) {
@@ -44,15 +51,19 @@ public class Dog {
     }
 
 
-    public int tick() {
-        int time = 30;
-        return time;
+    public void tick() {
+
+        this.hungerLevel++;
+        this.thirstLevel++;
+        this.boredomLevel++;
+        this.hungerLevel++;
     }
 
-    public boolean play() {
-
-     boolean result = false;
-        return result;
+    public void play() {
+        this.tick++;
+        this.wantsToPlay = false;
+        this.hungerLevel++;
+        this.thirstLevel++;
     }
 
     public boolean hunger() {
@@ -75,13 +86,14 @@ public class Dog {
         return result;
     }
 
-    public void stats() {
-        System.out.println("My name is " + name);
-        boolean hungerStatus = hunger();
-        boolean thirstStatus = thirst();
-        System.out.println("My name is " + name);
-        System.out.println("My name is " + name);
-        System.out.println("My name is " + name);
+    public String stats() {
+      String myStats = "";
+
+      myStats +="Here is my thirst level: " + thirstLevel;
+        myStats +="Here is my hunger level: "+ hungerLevel;
+        myStats +="Here is my boredom level: " + boredomLevel;
+
+        return myStats;
 
     }
 
@@ -90,11 +102,11 @@ public class Dog {
         String hello = "";
 
         hello += "My name is " + name + ". ";
-        hello+= "I am " + getAge() + "years old. ";
-        hello+= "I am " + getWeight() + "lbs. ";
+        hello += "I am " + getAge() + "years old. ";
+        hello += "I am " + getWeight() + "lbs. ";
         hello += "My favorite toy(s) is/are " + favoriteToy + ". ";
         hello += "My favorite food is " + favoriteFood + ".";
-        
+
         return hello;
     }
 }
