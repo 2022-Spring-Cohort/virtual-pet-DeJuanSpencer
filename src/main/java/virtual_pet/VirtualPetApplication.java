@@ -36,11 +36,11 @@ public class VirtualPetApplication {
                 System.out.println(stats);
 
                 ArrayList<String> interactionOptions = new ArrayList<String>();
-                interactionOptions.add("Play");
-                interactionOptions.add("Walk");
-                interactionOptions.add("Food");
-                interactionOptions.add("Water");
-                interactionOptions.add("Nothing");
+                interactionOptions.add("P");
+                interactionOptions.add("W");
+                interactionOptions.add("F");
+                interactionOptions.add("W");
+                interactionOptions.add("N");
 
 
                 System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
@@ -49,33 +49,37 @@ public class VirtualPetApplication {
 
                 // TODO Create an array of action steps to interact with the animal
                 while (action.equalsIgnoreCase("help")) {
-                    System.out.println("Play? Walk? Give water? Give food? Or leave it alone?");
+                    System.out.println("P for Play.\n W for Walk.\n Wr for water. \n F for food.\n N for nothing.");
                     action = input.nextLine();
                 }
 
-                if (action.equalsIgnoreCase("Play")) {
+                if (action.equalsIgnoreCase("P")) {
                     System.out.println("Playing!");
                     animal.thirstLevel++;
                     animal.boredomLevel--;
                     animal.hungerLevel++;
                     animal.wantsToPlay = false;
 
-                } else if (action.equalsIgnoreCase("Walk")) {
+                } else if (action.equalsIgnoreCase("W")) {
+                    System.out.println("Walking!");
                     animal.thirstLevel++;
                     animal.boredomLevel--;
                     animal.hungerLevel++;
                     animal.wantsToPlay = false;
-                } else if (action.equalsIgnoreCase("Food")) {
+                } else if (action.equalsIgnoreCase("Wr")) {
+                    System.out.println("Drinking water!");
                     animal.thirstLevel++;
                     animal.boredomLevel--;
                     animal.hungerLevel--;
 
-                } else if (action.equalsIgnoreCase("Water")) {
+                } else if (action.equalsIgnoreCase("F")) {
+                    System.out.println("Eating food!");
                     animal.thirstLevel--;
                     animal.boredomLevel--;
                     animal.hungerLevel++;
 
-                } else if (action.equalsIgnoreCase("Nothing")) {
+                } else if (action.equalsIgnoreCase("N")) {
+                    System.out.println("Doing nothing...");
                     animal.thirstLevel++;
                     animal.boredomLevel++;
                     animal.hungerLevel++;
@@ -85,9 +89,6 @@ public class VirtualPetApplication {
         }
     }
             //TODO Create checks that find conditions which determine where the game will go
-
-
-
 
     public Dog animalRoster() {
         Scanner input = new Scanner(System.in);
@@ -106,7 +107,7 @@ public class VirtualPetApplication {
         input.nextLine();
 
         Dog doggo = new Dog(name, furColor, favoriteToy, favoriteFood, age, weight);
-        
+
         return doggo;
 
 
