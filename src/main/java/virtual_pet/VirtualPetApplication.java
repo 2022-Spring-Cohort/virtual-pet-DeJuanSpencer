@@ -21,13 +21,12 @@ public class VirtualPetApplication {
     public void gameMethod() {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("How many turns do you want?");
-        int turns = input.nextInt();
-        input.nextLine();
-        int count = 0;
+        Random rand = new Random();
 
-        VirtualPet pet = petRoster();
-        System.out.println(pet.greeting());
+       ArrayList <VirtualPet> petList = petRoster();
+
+       VirtualPet pet = petList.get(rand.nextInt(petList.size()));
+
 
         while (pet.isAlive) {
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
@@ -94,9 +93,10 @@ public class VirtualPetApplication {
     }
 
 
-    //TODO Create checks that find conditions which determine where the game will go
+    //TODO Create a loop for how many animals the user wants. Create an array of pets?
+    public ArrayList<VirtualPet> petRoster() {
+        ArrayList<VirtualPet> petList = new ArrayList<>();
 
-    public VirtualPet petRoster() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Do you want pet features to be automatically generated?");
@@ -136,21 +136,30 @@ public class VirtualPetApplication {
 
             Random rand = new Random();
 
-            int nameIndex = rand.nextInt(animalNames.size()) + 1;
-            String name = animalNames.get(rand.nextInt(nameIndex));
+            System.out.println("How many animals am I to create for you? ***NOT DONE YET***");
+            int numberOfAnimals = input.nextInt();
 
-            int typeIndex = rand.nextInt(animals.size()) + 1;
-            String animalType = "";
-
-            int colorIndex = rand.nextInt(animalColors.size()) + 1;
-            String furColor = "";
-
-            int age = rand.nextInt(10) + 1;
-            int weight = rand.nextInt(50) + 1;
+            input.nextLine();
+            for (int count = 0; count < numberOfAnimals; count++) {
 
 
-            VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
-            return pet;
+                int nameIndex = rand.nextInt(animalNames.size());
+                String name = animalNames.get(rand.nextInt(nameIndex));
+
+                int typeIndex = rand.nextInt(animals.size());
+                String animalType = animals.get(typeIndex);
+
+                int colorIndex = rand.nextInt(animalColors.size());
+                String furColor = animalColors.get(colorIndex);
+
+                int age = rand.nextInt(10) + 1;
+                int weight = rand.nextInt(50) + 1;
+
+
+                VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            return petList;
         } else if (choice.equalsIgnoreCase("N")) {
             System.out.println("Enter the name of your pet");
             String name = input.nextLine();
@@ -186,9 +195,10 @@ public class VirtualPetApplication {
             input.nextLine();
 
             VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
-            return pet;
+            petList.add(pet);
+            return petList;
         }
-       return null;
+        return null;
     }
 
     public String animalASCII(String animalType) {

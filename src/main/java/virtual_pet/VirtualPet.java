@@ -30,12 +30,8 @@ public class VirtualPet {
         this.name = name;
         this.animalType = animalType;
         this.furColor = furColor;
-
         this.age = age;
         this.weight = weight;
-
-
-
     }
 
 
@@ -46,7 +42,6 @@ public class VirtualPet {
     public String getFurColor() {
         return furColor;
     }
-
 
     public int getAge() {
         return age;
@@ -99,8 +94,8 @@ public class VirtualPet {
         String petStats = "";
 
         petStats += "Thirst: " + thirstLevel;
-        petStats += "Hunger: " + hungerLevel;
-        petStats += "Boredom: " + boredomLevel;
+        petStats += " Hunger: " + hungerLevel;
+        petStats += " Boredom: " + boredomLevel;
 
         return petStats;
 
@@ -111,8 +106,8 @@ public class VirtualPet {
         String hello = "";
 
         hello += "My name is " + name + ". ";
-        hello += "I am " + getAge() + "years old. ";
-        hello += "I am " + getWeight() + "lbs. ";
+        hello += "I am " + getAge() + " years old. ";
+        hello += "I am " + getWeight() + " lbs. ";
 
 
         return hello;
