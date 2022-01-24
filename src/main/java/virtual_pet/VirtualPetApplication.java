@@ -27,6 +27,9 @@ public class VirtualPetApplication {
 
        VirtualPet pet = petList.get(rand.nextInt(petList.size()));
 
+      String petGreeting = pet.greeting();
+        System.out.println(petGreeting);
+
 
         while (pet.isAlive) {
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
@@ -201,56 +204,7 @@ public class VirtualPetApplication {
         return null;
     }
 
-    public String animalASCII(String animalType) {
-        String animalASCII = "";
-        if (animalType.equalsIgnoreCase("dog")) {
-            animalASCII = "  __      _\n" +
-                    "o'')}____//\n" +
-                    " `_/      )\n" +
-                    " (_(_/-(_/";
-        } else if (animalType.equalsIgnoreCase("cat")) {
-            animalASCII = " _._     _,-'\"\"`-._\n" +
-                    "(,-.`._,'(       |\\`-/|\n" +
-                    "    `-.-' \\ )-`( , o o)\n" +
-                    "          `-    \\`_`\"'-";
-        } else if (animalType.equalsIgnoreCase("bird")) {
-            animalASCII = "   \\\\\n" +
-                    "   (o>\n" +
-                    "\\\\_//)\n" +
-                    " \\_/_)\n" +
-                    "  _|_";
-        } else if (animalType.equalsIgnoreCase("fish")) {
-            animalASCII = "O     O           ,       \n" +
-                    "  o o          .:/    \n" +
-                    "    o      ,,///;,   ,;/ \n" +
-                    "      o   o)::::::;;///\n" +
-                    "         >::::::::;;\\\\\\ \n" +
-                    "           ''\\\\\\\\\\'\" ';\\ \n" +
-                    "              ';\\";
-        } else if (animalType.equalsIgnoreCase("monkey")) {
-            animalASCII = "   .--.  .-\"     \"-.  .--.\n" +
-                    "  / .. \\/  .-. .-.  \\/ .. \\\n" +
-                    " | |  '|  /   Y   \\  |'  | |\n" +
-                    " | \\   \\  \\ 0 | 0 /  /   / |\n" +
-                    "  \\ '- ,\\.-\"`` ``\"-./, -' /\n" +
-                    "   `'-' /_   ^ ^   _\\ '-'`\n" +
-                    "       |  \\._   _./  |\n" +
-                    "       \\   \\ `~` /   /\n" +
-                    "        '._ '-=-' _.'\n" +
-                    "           '~---~'";
-        } else if (animalType.equalsIgnoreCase("rabbit")) {
-            animalASCII = "     ((`\\\n" +
-                    "            ___ \\\\ '--._\n" +
-                    "         .'`   `'    o  )\n" +
-                    "        /    \\   '. __.'\n" +
-                    "       _|    /_  \\ \\_\\_\n" +
-                    "      {_\\______\\-'\\__\\_\\";
-        }
 
-
-        return animalASCII;
-
-    }
 
 
 }
