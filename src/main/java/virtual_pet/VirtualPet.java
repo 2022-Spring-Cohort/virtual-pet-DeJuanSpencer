@@ -8,7 +8,7 @@ public class VirtualPet {
     private String animalType;
     private String furColor;
     private int age;
-    private int weight;
+    private double weight;
     public String greeting;
     public String animalSound;
     public int tick = 0;
@@ -26,7 +26,7 @@ public class VirtualPet {
 
 
 
-    public VirtualPet(String name, String animalType, String furColor, int age, int weight) {
+    public VirtualPet(String name, String animalType, String furColor, int age, double weight) {
         this.name = name;
         this.animalType = animalType;
         this.furColor = furColor;
@@ -37,6 +37,9 @@ public class VirtualPet {
 
     public String getName() {
         return name;
+    }
+    public String getAnimalType() {
+        return animalType;
     }
 
     public String getFurColor() {

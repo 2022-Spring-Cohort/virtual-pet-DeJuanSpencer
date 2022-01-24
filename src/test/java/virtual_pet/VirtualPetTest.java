@@ -11,36 +11,63 @@ public class VirtualPetTest {
     public void testGetName() {
 
 
-        VirtualPet myTest = new VirtualPet();
+        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
 
-        int result = 0;
+        String result = myTest.getName();
 
 
-
-        assertEquals(0, result);
+        assertEquals("Brandy", result);
     }
 
-        @Test
-
-        public void testGetWeight() {
-            VirtualPetApplication myTest = new VirtualPetApplication();
+    @Test
+    public void testGetAnimalType() {
 
 
+        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+
+        String result = myTest.getAnimalType();
 
 
-        }
+        assertEquals("dog", result);
+    }
+
+    @Test
+    public void testGetFurColor() {
+
+
+        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+
+        String result = myTest.getFurColor();
+
+
+        assertEquals("brown", result);
+    }
+
     @Test
     public void testGetAge() {
 
 
-        VirtualPetApplication myTest = new VirtualPetApplication();
+        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
 
-        boolean result = myTest.isAlive();
+        int result = myTest.getAge();
 
-        assertEquals(true, result);
+
+        assertEquals(3, result);
+    }
+
+    @Test
+    public void testGetWeight() {
+
+
+        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+
+        double result = myTest.getWeight();
+
+
+        assertEquals(10, result);
     }
 
 
-    }
+}
 
 

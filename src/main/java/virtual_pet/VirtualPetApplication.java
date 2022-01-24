@@ -153,7 +153,7 @@ public class VirtualPetApplication {
                 String furColor = animalColors.get(colorIndex);
 
                 int age = rand.nextInt(10) + 1;
-                int weight = rand.nextInt(50) + 1;
+                double weight = rand.nextInt(50) + 1;
 
 
                 VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
@@ -190,7 +190,7 @@ public class VirtualPetApplication {
             int age = input.nextInt();
 
             System.out.println("Weight?");
-            int weight = input.nextInt();
+            double weight = input.nextDouble();
 
             input.nextLine();
 
