@@ -7,8 +7,6 @@ public class VirtualPet {
     private String name;
     private String animalType;
     private String furColor;
-    private String favoriteToy;
-    private String favoriteFood;
     private int age;
     private int weight;
     public String greeting;
@@ -28,14 +26,14 @@ public class VirtualPet {
 
 
 
-    public VirtualPet(String name, String animalType, String furColor, String favoriteToy, String favoriteFood, int age, int weight) {
+    public VirtualPet(String name, String animalType, String furColor, int age, int weight) {
         this.name = name;
         this.animalType = animalType;
         this.furColor = furColor;
-        this.favoriteToy = favoriteToy;
+
         this.age = age;
         this.weight = weight;
-        this.favoriteFood = favoriteFood;
+
 
 
     }
@@ -49,15 +47,12 @@ public class VirtualPet {
         return furColor;
     }
 
-    public String getFavoriteToy() {
-        return favoriteToy;
-    }
 
     public int getAge() {
         return age;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -118,8 +113,7 @@ public class VirtualPet {
         hello += "My name is " + name + ". ";
         hello += "I am " + getAge() + "years old. ";
         hello += "I am " + getWeight() + "lbs. ";
-        hello += "My favorite toy(s) is/are " + favoriteToy + ". ";
-        hello += "My favorite food is " + favoriteFood + ".";
+
 
         return hello;
     }

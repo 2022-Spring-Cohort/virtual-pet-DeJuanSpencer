@@ -2,6 +2,7 @@ package virtual_pet;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class VirtualPetApplication {
@@ -98,49 +99,96 @@ public class VirtualPetApplication {
     public VirtualPet petRoster() {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Enter the name of your pet");
-        String name = input.nextLine();
+        System.out.println("Do you want pet features to be automatically generated?");
+        System.out.println("Y/N?...");
+        String choice = input.nextLine();
 
-        ArrayList animals = new ArrayList<String>();
-        animals.add("dog");
-        animals.add("cat");
-        animals.add("bird");
-        animals.add("fish");
-        animals.add("monkey");
-        animals.add("rabbit");
-
-        String animalType = "";
-        boolean choiceDoesNotExist = true;
-        while (choiceDoesNotExist) {
-            System.out.println("Choose from the following for the animal type:");
-
-            System.out.println("Dog, Cat, Bird, Fish, Monkey, or Rabbit");
-            animalType = input.nextLine();
-
-            if (animals.contains(animalType.toLowerCase())) {
-                choiceDoesNotExist = false;
-
-            }
-
+        while (!choice.equalsIgnoreCase("Y") && !choice.equalsIgnoreCase("N")) {
+            System.out.println("Y/N?...");
+            choice = input.nextLine();
         }
 
+        if (choice.equalsIgnoreCase("Y")) {
+            ArrayList<String> animalNames = new ArrayList<>();
+            animalNames.add("PoofPoof");
+            animalNames.add("Zeus");
+            animalNames.add("Snuffles");
+            animalNames.add("Snowball");
 
-        System.out.println("Fur Color?");
-        String furColor = input.nextLine();
-        System.out.println("Favorite toy?");
-        String favoriteToy = input.nextLine();
-        System.out.println("Favorite food?");
-        String favoriteFood = input.nextLine();
-        System.out.println("Age?");
-        int age = input.nextInt();
-        System.out.println("Weight?");
-        int weight = input.nextInt();
-        input.nextLine();
-        VirtualPet pet = new VirtualPet(name, animalType, furColor, favoriteToy, favoriteFood, age, weight);
+            ArrayList<String> animals = new ArrayList<>();
+            animals.add("dog");
+            animals.add("cat");
+            animals.add("bird");
+            animals.add("fish");
+            animals.add("monkey");
+            animals.add("rabbit");
 
-        return pet;
+            ArrayList<String> animalColors = new ArrayList<>();
+            animalColors.add("Red");
+            animalColors.add("Orange");
+            animalColors.add("Yellow");
+            animalColors.add("Green");
+            animalColors.add("Blue");
+            animalColors.add("Violet");
+            animalColors.add("Black");
+            animalColors.add("White");
 
 
+            Random rand = new Random();
+
+            int nameIndex = rand.nextInt(animalNames.size()) + 1;
+            String name = animalNames.get(rand.nextInt(nameIndex));
+
+            int typeIndex = rand.nextInt(animals.size()) + 1;
+            String animalType = "";
+
+            int colorIndex = rand.nextInt(animalColors.size()) + 1;
+            String furColor = "";
+
+            int age = rand.nextInt(10) + 1;
+            int weight = rand.nextInt(50) + 1;
+
+
+            VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
+            return pet;
+        } else if (choice.equalsIgnoreCase("N")) {
+            System.out.println("Enter the name of your pet");
+            String name = input.nextLine();
+
+            ArrayList animals = new ArrayList<String>();
+            animals.add("dog");
+            animals.add("cat");
+            animals.add("bird");
+            animals.add("fish");
+            animals.add("monkey");
+            animals.add("rabbit");
+            String animalType = "";
+            boolean choiceDoesNotExist = true;
+            while (choiceDoesNotExist) {
+                System.out.println("Choose from the following for the animal type:");
+                System.out.println("Dog, Cat, Bird, Fish, Monkey, or Rabbit");
+                animalType = input.nextLine();
+
+                if (animals.contains(animalType.toLowerCase())) {
+                    choiceDoesNotExist = false;
+                }
+            }
+
+            System.out.println("Fur Color?");
+            String furColor = input.nextLine();
+
+            System.out.println("Age?");
+            int age = input.nextInt();
+
+            System.out.println("Weight?");
+            int weight = input.nextInt();
+
+            input.nextLine();
+
+            VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
+            return pet;
+        }
+       return null;
     }
 
     public String animalASCII(String animalType) {
