@@ -8,32 +8,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
     @Test
-    public void testTick() {
+    public void testGetName() {
 
 
-        Dog myTest = new Dog();
+        VirtualPet myTest = new VirtualPet();
 
-        int result = myTest.tick;
+        int result = 0;
+
+
 
         assertEquals(0, result);
     }
 
         @Test
 
-        public void testingName() {
-            Dog hungerTest = new Dog();
+        public void testGetWeight() {
+            VirtualPetApplication myTest = new VirtualPetApplication();
 
-            boolean result = hungerTest.hunger();
+
 
 
         }
     @Test
-    public void testAlive() {
+    public void testGetAge() {
 
 
         VirtualPetApplication myTest = new VirtualPetApplication();
 
-        boolean result = myTest.alive();
+        boolean result = myTest.isAlive();
 
         assertEquals(true, result);
     }

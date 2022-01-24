@@ -1,19 +1,18 @@
 package virtual_pet;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 
 public class VirtualPetApplication {
+
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
 
         VirtualPetApplication myGame = new VirtualPetApplication();
-        VirtualPetApplication Dog = new VirtualPetApplication();
+
 
         myGame.gameMethod();
     }
@@ -21,17 +20,21 @@ public class VirtualPetApplication {
     public void gameMethod() {
 
         Scanner input = new Scanner(System.in);
+        System.out.println("How many turns do you want?");
+        int turns = input.nextInt();
+        input.nextLine();
+        int count = 0;
 
-        Dog animal = animalRoster();
-        System.out.println(animal.greeting());
+        VirtualPet pet = petRoster();
+        System.out.println(pet.greeting());
 
-        while (animal.isAlive) {
-            if (animal.hungerLevel >= 5 || animal.thirstLevel >= 5) {
+        while (pet.isAlive) {
+            if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
                 System.out.println("Uh-Oh! Time to get a new one!");
-                animal.isAlive = false;
-            } else if (animal.hungerLevel < 5 || animal.thirstLevel < 5) {
+                pet.isAlive = false;
+            } else if (pet.hungerLevel < 5 || pet.thirstLevel < 5) {
 
-                String stats = animal.stats();
+                String stats = pet.checkup();
 
                 System.out.println(stats);
 
@@ -39,7 +42,7 @@ public class VirtualPetApplication {
                 interactionOptions.add("P");
                 interactionOptions.add("W");
                 interactionOptions.add("F");
-                interactionOptions.add("W");
+                interactionOptions.add("Wr");
                 interactionOptions.add("N");
 
 
@@ -55,45 +58,73 @@ public class VirtualPetApplication {
 
                 if (action.equalsIgnoreCase("P")) {
                     System.out.println("Playing!");
-                    animal.thirstLevel++;
-                    animal.boredomLevel--;
-                    animal.hungerLevel++;
-                    animal.wantsToPlay = false;
+                    pet.thirstLevel++;
+                    pet.boredomLevel--;
+                    pet.hungerLevel++;
+                    pet.wantsToPlay = false;
 
                 } else if (action.equalsIgnoreCase("W")) {
                     System.out.println("Walking!");
-                    animal.thirstLevel++;
-                    animal.boredomLevel--;
-                    animal.hungerLevel++;
-                    animal.wantsToPlay = false;
+                    pet.thirstLevel++;
+                    pet.boredomLevel--;
+                    pet.hungerLevel++;
+                    pet.wantsToPlay = false;
                 } else if (action.equalsIgnoreCase("Wr")) {
                     System.out.println("Drinking water!");
-                    animal.thirstLevel++;
-                    animal.boredomLevel--;
-                    animal.hungerLevel--;
+                    pet.thirstLevel++;
+                    pet.boredomLevel--;
+                    pet.hungerLevel--;
 
                 } else if (action.equalsIgnoreCase("F")) {
                     System.out.println("Eating food!");
-                    animal.thirstLevel--;
-                    animal.boredomLevel--;
-                    animal.hungerLevel++;
+                    pet.thirstLevel--;
+                    pet.boredomLevel--;
+                    pet.hungerLevel++;
 
                 } else if (action.equalsIgnoreCase("N")) {
                     System.out.println("Doing nothing...");
-                    animal.thirstLevel++;
-                    animal.boredomLevel++;
-                    animal.hungerLevel++;
-                    animal.wantsToPlay = true;
+                    pet.thirstLevel++;
+                    pet.boredomLevel++;
+                    pet.hungerLevel++;
+                    pet.wantsToPlay = true;
                 }
             }
         }
     }
-            //TODO Create checks that find conditions which determine where the game will go
 
-    public Dog animalRoster() {
+
+    //TODO Create checks that find conditions which determine where the game will go
+
+    public VirtualPet petRoster() {
         Scanner input = new Scanner(System.in);
+
         System.out.println("Enter the name of your pet");
         String name = input.nextLine();
+
+        ArrayList animals = new ArrayList<String>();
+        animals.add("dog");
+        animals.add("cat");
+        animals.add("bird");
+        animals.add("fish");
+        animals.add("monkey");
+        animals.add("rabbit");
+
+        String animalType = "";
+        boolean choiceDoesNotExist = true;
+        while (choiceDoesNotExist) {
+            System.out.println("Choose from the following for the animal type:");
+
+            System.out.println("Dog, Cat, Bird, Fish, Monkey, or Rabbit");
+            animalType = input.nextLine();
+
+            if (animals.contains(animalType.toLowerCase())) {
+                choiceDoesNotExist = false;
+
+            }
+
+        }
+
+
         System.out.println("Fur Color?");
         String furColor = input.nextLine();
         System.out.println("Favorite toy?");
@@ -105,13 +136,65 @@ public class VirtualPetApplication {
         System.out.println("Weight?");
         int weight = input.nextInt();
         input.nextLine();
+        VirtualPet pet = new VirtualPet(name, animalType, furColor, favoriteToy, favoriteFood, age, weight);
 
-        Dog doggo = new Dog(name, furColor, favoriteToy, favoriteFood, age, weight);
-
-        return doggo;
+        return pet;
 
 
     }
+
+    public String animalASCII(String animalType) {
+        String animalASCII = "";
+        if (animalType.equalsIgnoreCase("dog")) {
+            animalASCII = "  __      _\n" +
+                    "o'')}____//\n" +
+                    " `_/      )\n" +
+                    " (_(_/-(_/";
+        } else if (animalType.equalsIgnoreCase("cat")) {
+            animalASCII = " _._     _,-'\"\"`-._\n" +
+                    "(,-.`._,'(       |\\`-/|\n" +
+                    "    `-.-' \\ )-`( , o o)\n" +
+                    "          `-    \\`_`\"'-";
+        } else if (animalType.equalsIgnoreCase("bird")) {
+            animalASCII = "   \\\\\n" +
+                    "   (o>\n" +
+                    "\\\\_//)\n" +
+                    " \\_/_)\n" +
+                    "  _|_";
+        } else if (animalType.equalsIgnoreCase("fish")) {
+            animalASCII = "O     O           ,       \n" +
+                    "  o o          .:/    \n" +
+                    "    o      ,,///;,   ,;/ \n" +
+                    "      o   o)::::::;;///\n" +
+                    "         >::::::::;;\\\\\\ \n" +
+                    "           ''\\\\\\\\\\'\" ';\\ \n" +
+                    "              ';\\";
+        } else if (animalType.equalsIgnoreCase("monkey")) {
+            animalASCII = "   .--.  .-\"     \"-.  .--.\n" +
+                    "  / .. \\/  .-. .-.  \\/ .. \\\n" +
+                    " | |  '|  /   Y   \\  |'  | |\n" +
+                    " | \\   \\  \\ 0 | 0 /  /   / |\n" +
+                    "  \\ '- ,\\.-\"`` ``\"-./, -' /\n" +
+                    "   `'-' /_   ^ ^   _\\ '-'`\n" +
+                    "       |  \\._   _./  |\n" +
+                    "       \\   \\ `~` /   /\n" +
+                    "        '._ '-=-' _.'\n" +
+                    "           '~---~'";
+        } else if (animalType.equalsIgnoreCase("rabbit")) {
+            animalASCII = "     ((`\\\n" +
+                    "            ___ \\\\ '--._\n" +
+                    "         .'`   `'    o  )\n" +
+                    "        /    \\   '. __.'\n" +
+                    "       _|    /_  \\ \\_\\_\n" +
+                    "      {_\\______\\-'\\__\\_\\";
+        }
+
+
+        return animalASCII;
+
+    }
+
+
 }
 
 
