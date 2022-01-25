@@ -14,12 +14,21 @@ return pottying;
     @Override
     public String play() {
 String playing = "Tweet tweet tweet!";
+        this.hungerLevel++;
+        this.boredomLevel=0;
+        this.thirstLevel++;
+        this.wasteLevel--;
 return playing;
     }
 
     @Override
     public String eat() {
 String eating = "*Peck peck peck*";
+        this.hungerLevel=0;
+        this.boredomLevel--;
+        this.thirstLevel++;
+        this.wasteLevel++;
+
 return eating;
     }
 

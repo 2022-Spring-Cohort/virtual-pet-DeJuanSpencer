@@ -18,6 +18,7 @@ return null;
     @Override
     public String eat() {
 String eating = "*Bubbles*";
+hungerLevel=0;
 return eating;
     }
 

@@ -14,12 +14,21 @@ return pottying;
     @Override
     public String play() {
 String playing = "*Tail wags*";
+        this.hungerLevel++;
+        this.boredomLevel=0;
+        this.thirstLevel++;
+        this.wasteLevel--;
 return playing;
     }
 
     @Override
     public String eat() {
 String eating = "*Munch munch munch*";
+        this.hungerLevel=0;
+        this.boredomLevel--;
+        this.thirstLevel++;
+        this.wasteLevel++;
+
 return eating;
     }
 

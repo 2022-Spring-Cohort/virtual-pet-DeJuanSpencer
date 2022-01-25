@@ -8,6 +8,7 @@ public class Rabbit extends VirtualPet {
     @Override
     public String potty() {
 String pottying = "Drop drop drop...";
+this.wasteLevel=0;
 
 return pottying;
     }
@@ -16,7 +17,7 @@ return pottying;
     public String play() {
         String playing = "Hippity hoppity";
         this.hungerLevel++;
-        this.boredomLevel--;
+        this.boredomLevel=0;
         this.thirstLevel++;
         this.wasteLevel--;
         return playing;
@@ -25,6 +26,10 @@ return pottying;
     @Override
     public String eat() {
         String eating = "munch munch munch munch munch....";
+        this.hungerLevel=0;
+        this.boredomLevel--;
+        this.thirstLevel++;
+        this.wasteLevel++;
 
         return eating;
 
