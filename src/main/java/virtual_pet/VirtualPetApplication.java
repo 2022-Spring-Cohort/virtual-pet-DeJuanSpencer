@@ -207,6 +207,7 @@ public class VirtualPetApplication {
         guess.add("food");
         guess.add("water");
         guess.add("play");
+        guess.add("potty");
 
 
         return guess;

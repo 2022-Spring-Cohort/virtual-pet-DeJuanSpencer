@@ -1,19 +1,13 @@
 package virtual_pet;
 
-
-
-public class VirtualPet {
+public abstract class VirtualPet {
 
     private String name;
     private String animalType;
     private String furColor;
     private int age;
     private double weight;
-    public String greeting;
-    public String animalSound;
-    public int tick = 0;
     public boolean isAlive = true;
-    public boolean wantsToStayWithYou = true;
     public boolean isHungry = false;
     public int hungerLevel = 0;
     public boolean isThirsty = false;
@@ -23,9 +17,6 @@ public class VirtualPet {
     public int wasteLevel = 0;
     public boolean needsToWaste = false;
 
-
-
-
     public VirtualPet(String name, String animalType, String furColor, int age, double weight) {
         this.name = name;
         this.animalType = animalType;
@@ -34,10 +25,18 @@ public class VirtualPet {
         this.weight = weight;
     }
 
+    public abstract String potty();
+    public abstract String play();
+    public abstract String eat();
+    public abstract String ASCIIArt();
+    public abstract String talking();
+
+
 
     public String getName() {
         return name;
     }
+
     public String getAnimalType() {
         return animalType;
     }
@@ -68,11 +67,11 @@ public class VirtualPet {
 
     }
 
-    public void play() {
-        this.wantsToPlay = false;
-        this.hungerLevel++;
-        this.thirstLevel++;
-    }
+//    public void play() {
+//        this.wantsToPlay = false;
+//        this.hungerLevel++;
+//        this.thirstLevel++;
+//    }
 
     public boolean hunger() {
         if (hungerLevel >= 3) {
@@ -147,12 +146,13 @@ public class VirtualPet {
     }
 
 
-    public String talking() {
+//    public String talking() {
+//
+//        String animalSound = "A lot of animal gibberish to get your attention ";
+//        return animalSound;
+//
+//    }
 
-        String animalSound = "A lot of animal gibberish to get your attention ";
-        return animalSound;
-
-    }
     public String animalASCII(String animalType) {
         String animalASCII = "";
         if (animalType.equalsIgnoreCase("dog")) {
