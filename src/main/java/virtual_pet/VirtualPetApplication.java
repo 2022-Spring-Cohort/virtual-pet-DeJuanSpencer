@@ -61,6 +61,8 @@ public class VirtualPetApplication {
                     pet.boredomLevel--;
                     pet.hungerLevel++;
                     pet.wantsToPlay = false;
+                    String petIsplaying =pet.play();
+                    System.out.println(petIsplaying);
 
                 } else if (action.equalsIgnoreCase("W")) {
                     System.out.println("Walking!");
@@ -68,6 +70,7 @@ public class VirtualPetApplication {
                     pet.boredomLevel--;
                     pet.hungerLevel++;
                     pet.wantsToPlay = false;
+
                 } else if (action.equalsIgnoreCase("Wr")) {
                     System.out.println("Drinking water!");
                     pet.thirstLevel++;
@@ -108,6 +111,7 @@ public class VirtualPetApplication {
         }
 
         if (choice.equalsIgnoreCase("Y")) {
+
             ArrayList<String> animalNames = new ArrayList<>();
             animalNames.add("PoofPoof");
             animalNames.add("Zeus");
@@ -153,10 +157,30 @@ public class VirtualPetApplication {
 
                 int age = rand.nextInt(10) + 1;
                 double weight = rand.nextInt(50) + 1;
-
-
-                VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
-                petList.add(pet);
+                if(animalType.equalsIgnoreCase("dog")){
+                    Dog pet = new Dog(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
+                else if(animalType.equalsIgnoreCase("cat")){
+                    Bird pet = new Bird(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
+                else if(animalType.equalsIgnoreCase("bird")){
+                    Cat pet = new Cat(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
+                else if(animalType.equalsIgnoreCase("fish")){
+                    Fish pet = new Fish(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
+                else if(animalType.equalsIgnoreCase("monkey")){
+                    Monkey pet = new Monkey(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
+                else if(animalType.equalsIgnoreCase("rabbit")){
+                    Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
+                    petList.add(pet);
+                }
             }
             return petList;
         } else if (choice.equalsIgnoreCase("N")) {
@@ -192,9 +216,32 @@ public class VirtualPetApplication {
             double weight = input.nextDouble();
 
             input.nextLine();
+            if(animalType.equalsIgnoreCase("dog")){
+                Dog pet = new Dog(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            else if(animalType.equalsIgnoreCase("cat")){
+                Bird pet = new Bird(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            else if(animalType.equalsIgnoreCase("bird")){
+                Cat pet = new Cat(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            else if(animalType.equalsIgnoreCase("fish")){
+                Fish pet = new Fish(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            else if(animalType.equalsIgnoreCase("monkey")){
+                Monkey pet = new Monkey(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
+            else if(animalType.equalsIgnoreCase("rabbit")){
+                Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
+                petList.add(pet);
+            }
 
-            VirtualPet pet = new VirtualPet(name, animalType, furColor, age, weight);
-            petList.add(pet);
+
             return petList;
         }
         return null;
