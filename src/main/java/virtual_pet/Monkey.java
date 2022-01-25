@@ -1,35 +1,34 @@
 package virtual_pet;
 
-public class Monkey extends VirtualPet{
+public class Monkey extends VirtualPet {
     public Monkey(String name, String animalType, String furColor, int age, double weight) {
         super(name, animalType, furColor, age, weight);
     }
 
     @Override
     public String potty() {
-String pottying = "EEEEEEE....OOOOO ";
-return pottying;
+        String pottying = "EEEEEEE....OOOOO ";
+        return pottying;
     }
 
     @Override
     public String play() {
-String playing = "Oooh ohhh eeeh oooh";
+        String playing = "Oooh ohhh eeeh oooh";
         this.hungerLevel++;
-        this.boredomLevel=0;
+        this.boredomLevel = 0;
         this.thirstLevel++;
         this.wasteLevel--;
-return playing;
+        return playing;
     }
 
     @Override
     public String eat() {
-String eating = "*Lip smacking noises*";
-        this.hungerLevel=0;
+        String eating = "*Lip smacking noises*";
+        this.hungerLevel = 0;
         this.boredomLevel--;
         this.thirstLevel++;
         this.wasteLevel++;
-
-return eating;
+        return eating;
     }
 
     @Override

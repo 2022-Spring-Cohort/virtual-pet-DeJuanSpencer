@@ -7,29 +7,28 @@ public class Dog extends VirtualPet {
 
     @Override
     public String potty() {
-String pottying = "*Grunts*";
-return pottying;
+        String pottying = "*Grunts*";
+        return pottying;
     }
 
     @Override
     public String play() {
-String playing = "*Tail wags*";
+        String playing = "*Tail wags*";
         this.hungerLevel++;
-        this.boredomLevel=0;
+        this.boredomLevel = 0;
         this.thirstLevel++;
         this.wasteLevel--;
-return playing;
+        return playing;
     }
 
     @Override
     public String eat() {
-String eating = "*Munch munch munch*";
-        this.hungerLevel=0;
+        String eating = "*Munch munch munch*";
+        this.hungerLevel = 0;
         this.boredomLevel--;
         this.thirstLevel++;
         this.wasteLevel++;
-
-return eating;
+        return eating;
     }
 
     @Override

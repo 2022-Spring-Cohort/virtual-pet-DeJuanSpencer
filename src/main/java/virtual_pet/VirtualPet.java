@@ -1,7 +1,5 @@
 package virtual_pet;
-
 public abstract class VirtualPet {
-
     private String name;
     private String animalType;
     private String furColor;
@@ -31,8 +29,6 @@ public abstract class VirtualPet {
     public abstract String ASCIIArt();
     public abstract String talking();
 
-
-
     public String getName() {
         return name;
     }
@@ -53,32 +49,32 @@ public abstract class VirtualPet {
         return weight;
     }
 
-
-    public void tick() {
+    public boolean tick() {
+        boolean animalNeedsSomething = false;
         if (hungerLevel >= 3) {
+            animalNeedsSomething = true;
             talking();
         }
         if (wasteLevel >= 3) {
+            animalNeedsSomething = true;
             talking();
         }
         if (thirstLevel >= 3) {
+            animalNeedsSomething = true;
             talking();
         }
-
+        if (boredomLevel >= 3) {
+            animalNeedsSomething = true;
+            talking();
+        }
+        return animalNeedsSomething;
     }
-
-//    public void play() {
-//        this.wantsToPlay = false;
-//        this.hungerLevel++;
-//        this.thirstLevel++;
-//    }
 
     public boolean hunger() {
         if (hungerLevel >= 3) {
             System.out.println("You should consider giving it food.");
             isHungry = true;
         }
-
         return isHungry;
     }
 
@@ -87,73 +83,23 @@ public abstract class VirtualPet {
             System.out.println("You should consider giving it water.");
             isThirsty = true;
         }
-
-
         return isThirsty;
     }
 
     public String checkup() {
         String petStats = "";
-
         petStats += "Thirst: " + thirstLevel;
         petStats += " Hunger: " + hungerLevel;
         petStats += " Boredom: " + boredomLevel;
-
         return petStats;
-
     }
 
-
     public String greeting() {
-        String hello = "";
-
-       hello+= this.ASCIIArt();
-
+        String hello = this.ASCIIArt();
         hello += "My name is " + name + ". ";
         hello += "I am " + getAge() + " years old. ";
         hello += "I am " + getWeight() + " lbs. ";
-
-
         return hello;
     }
-
-    public void eatFood() {
-
-        this.wantsToPlay = true;
-        this.hungerLevel--;
-        this.thirstLevel++;
-    }
-
-    public void drinkWater() {
-        this.wantsToPlay = true;
-        this.thirstLevel--;
-    }
-
-    public int wasteLevel() {
-        if (wasteLevel >= 3) {
-            needsToWaste = true;
-            String message = talking();
-            System.out.println(message);
-        }
-
-        return wasteLevel;
-    }
-
-
-    public void goWaste() {
-
-        needsToWaste = false;
-
-    }
-
-
-//    public String talking() {
-//
-//        String animalSound = "A lot of animal gibberish to get your attention ";
-//        return animalSound;
-//
-//    }
-
-
-    }
+}
 

@@ -26,7 +26,7 @@ public class VirtualPetApplication {
 
         String petGreeting = pet.greeting();
         System.out.println(petGreeting);
-
+//TODO Add something to interact with the pet if it needs something
         while (pet.isAlive) {
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
                 System.out.println("Uh-Oh! Time to get a new one!");
@@ -61,7 +61,7 @@ public class VirtualPetApplication {
                     pet.boredomLevel--;
                     pet.hungerLevel++;
                     pet.wantsToPlay = false;
-                    String petIsplaying =pet.play();
+                    String petIsplaying = pet.play();
                     System.out.println(petIsplaying);
 
                 } else if (action.equalsIgnoreCase("W")) {
@@ -157,27 +157,22 @@ public class VirtualPetApplication {
 
                 int age = rand.nextInt(10) + 1;
                 double weight = rand.nextInt(50) + 1;
-                if(animalType.equalsIgnoreCase("dog")){
+                if (animalType.equalsIgnoreCase("dog")) {
                     Dog pet = new Dog(name, animalType, furColor, age, weight);
                     petList.add(pet);
-                }
-                else if(animalType.equalsIgnoreCase("cat")){
+                } else if (animalType.equalsIgnoreCase("cat")) {
                     Bird pet = new Bird(name, animalType, furColor, age, weight);
                     petList.add(pet);
-                }
-                else if(animalType.equalsIgnoreCase("bird")){
+                } else if (animalType.equalsIgnoreCase("bird")) {
                     Cat pet = new Cat(name, animalType, furColor, age, weight);
                     petList.add(pet);
-                }
-                else if(animalType.equalsIgnoreCase("fish")){
+                } else if (animalType.equalsIgnoreCase("fish")) {
                     Fish pet = new Fish(name, animalType, furColor, age, weight);
                     petList.add(pet);
-                }
-                else if(animalType.equalsIgnoreCase("monkey")){
+                } else if (animalType.equalsIgnoreCase("monkey")) {
                     Monkey pet = new Monkey(name, animalType, furColor, age, weight);
                     petList.add(pet);
-                }
-                else if(animalType.equalsIgnoreCase("rabbit")){
+                } else if (animalType.equalsIgnoreCase("rabbit")) {
                     Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
                     petList.add(pet);
                 }
@@ -216,27 +211,22 @@ public class VirtualPetApplication {
             double weight = input.nextDouble();
 
             input.nextLine();
-            if(animalType.equalsIgnoreCase("dog")){
+            if (animalType.equalsIgnoreCase("dog")) {
                 Dog pet = new Dog(name, animalType, furColor, age, weight);
                 petList.add(pet);
-            }
-            else if(animalType.equalsIgnoreCase("cat")){
+            } else if (animalType.equalsIgnoreCase("cat")) {
                 Bird pet = new Bird(name, animalType, furColor, age, weight);
                 petList.add(pet);
-            }
-            else if(animalType.equalsIgnoreCase("bird")){
+            } else if (animalType.equalsIgnoreCase("bird")) {
                 Cat pet = new Cat(name, animalType, furColor, age, weight);
                 petList.add(pet);
-            }
-            else if(animalType.equalsIgnoreCase("fish")){
+            } else if (animalType.equalsIgnoreCase("fish")) {
                 Fish pet = new Fish(name, animalType, furColor, age, weight);
                 petList.add(pet);
-            }
-            else if(animalType.equalsIgnoreCase("monkey")){
+            } else if (animalType.equalsIgnoreCase("monkey")) {
                 Monkey pet = new Monkey(name, animalType, furColor, age, weight);
                 petList.add(pet);
-            }
-            else if(animalType.equalsIgnoreCase("rabbit")){
+            } else if (animalType.equalsIgnoreCase("rabbit")) {
                 Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
                 petList.add(pet);
             }

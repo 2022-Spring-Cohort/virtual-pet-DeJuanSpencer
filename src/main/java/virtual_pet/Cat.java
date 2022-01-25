@@ -7,29 +7,28 @@ public class Cat extends VirtualPet {
 
     @Override
     public String potty() {
-String pottying = "*...*";
-return pottying;
+        String pottying = "*...*";
+        return pottying;
     }
 
     @Override
     public String play() {
-String playing = "*Hissing*";
+        String playing = "*Hissing*";
         this.hungerLevel++;
-        this.boredomLevel=0;
+        this.boredomLevel = 0;
         this.thirstLevel++;
         this.wasteLevel--;
-return playing;
+        return playing;
     }
 
     @Override
     public String eat() {
-String eating = "*...*";
-        this.hungerLevel=0;
+        String eating = "*...*";
+        this.hungerLevel = 0;
         this.boredomLevel--;
         this.thirstLevel++;
         this.wasteLevel++;
-
-return eating;
+        return eating;
     }
 
     @Override

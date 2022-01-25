@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public class Fish extends VirtualPet{
+public class Fish extends VirtualPet {
     public Fish(String name, String animalType, String furColor, int age, double weight) {
         super(name, animalType, furColor, age, weight);
     }
@@ -12,14 +12,14 @@ public class Fish extends VirtualPet{
 
     @Override
     public String play() {
-return null;
+        return null;
     }
 
     @Override
     public String eat() {
-String eating = "*Bubbles*";
-hungerLevel=0;
-return eating;
+        String eating = "*Bubbles*";
+        hungerLevel = 0;
+        return eating;
     }
 
     @Override

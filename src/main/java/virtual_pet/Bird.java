@@ -1,35 +1,34 @@
 package virtual_pet;
 
-public class Bird extends VirtualPet{
+public class Bird extends VirtualPet {
     public Bird(String name, String animalType, String furColor, int age, double weight) {
         super(name, animalType, furColor, age, weight);
     }
 
     @Override
     public String potty() {
-String pottying = "*Splat*";
-return pottying;
+        String pottying = "*Splat*";
+        return pottying;
     }
 
     @Override
     public String play() {
-String playing = "Tweet tweet tweet!";
+        String playing = "Tweet tweet tweet!";
         this.hungerLevel++;
-        this.boredomLevel=0;
+        this.boredomLevel = 0;
         this.thirstLevel++;
         this.wasteLevel--;
-return playing;
+        return playing;
     }
 
     @Override
     public String eat() {
-String eating = "*Peck peck peck*";
-        this.hungerLevel=0;
+        String eating = "*Peck peck peck*";
+        this.hungerLevel = 0;
         this.boredomLevel--;
         this.thirstLevel++;
         this.wasteLevel++;
-
-return eating;
+        return eating;
     }
 
     @Override
