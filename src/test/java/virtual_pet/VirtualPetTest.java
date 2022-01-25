@@ -11,7 +11,7 @@ public class VirtualPetTest {
     public void testGetName() {
 
 
-        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+        Dog myTest = new Dog("Brandy", "dog", "brown", 3, 10);
 
         String result = myTest.getName();
 
@@ -23,7 +23,7 @@ public class VirtualPetTest {
     public void testGetAnimalType() {
 
 
-        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+        Cat myTest = new Cat("Brandy", "cat", "brown", 3, 10);
 
         String result = myTest.getAnimalType();
 
@@ -35,7 +35,7 @@ public class VirtualPetTest {
     public void testGetFurColor() {
 
 
-        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+        Bird myTest = new Bird("Brandy", "bird", "brown", 3, 10);
 
         String result = myTest.getFurColor();
 
@@ -47,7 +47,7 @@ public class VirtualPetTest {
     public void testGetAge() {
 
 
-        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+        Fish myTest = new Fish("Brandy", "fish", "brown", 3, 10);
 
         int result = myTest.getAge();
 
@@ -59,7 +59,7 @@ public class VirtualPetTest {
     public void testGetWeight() {
 
 
-        VirtualPet myTest = new VirtualPet("Brandy", "dog", "brown", 3, 10);
+        Monkey myTest = new Monkey("Brandy", "monkey", "brown", 3, 10);
 
         double result = myTest.getWeight();
 
