@@ -9,12 +9,9 @@ public class VirtualPetApplication {
 
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-
-
         VirtualPetApplication myGame = new VirtualPetApplication();
-
-
         myGame.gameMethod();
     }
 
@@ -23,13 +20,12 @@ public class VirtualPetApplication {
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
 
-       ArrayList <VirtualPet> petList = petRoster();
+        ArrayList<VirtualPet> petList = petRoster();
 
-       VirtualPet pet = petList.get(rand.nextInt(petList.size()));
+        VirtualPet pet = petList.get(rand.nextInt(petList.size()));
 
-      String petGreeting = pet.greeting();
+        String petGreeting = pet.greeting();
         System.out.println(petGreeting);
-
 
         while (pet.isAlive) {
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
@@ -147,7 +143,7 @@ public class VirtualPetApplication {
 
 
                 int nameIndex = rand.nextInt(animalNames.size());
-                String name = animalNames.get(rand.nextInt(nameIndex));
+                String name = animalNames.get(nameIndex);
 
                 int typeIndex = rand.nextInt(animals.size());
                 String animalType = animals.get(typeIndex);
@@ -204,7 +200,17 @@ public class VirtualPetApplication {
         return null;
     }
 
+    public ArrayList<String> guessWhatsWrong() {
 
+        ArrayList<String> guess = new ArrayList<>();
+        guess.add("walk");
+        guess.add("food");
+        guess.add("water");
+        guess.add("play");
+
+
+        return guess;
+    }
 
 
 }
