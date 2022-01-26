@@ -33,6 +33,12 @@ public class Rabbit extends VirtualPet {
     }
 
     @Override
+    public String drink() {
+        String drinking = "*lapping noises";
+        return drinking;
+    }
+
+    @Override
     public String ASCIIArt() {
         String animalASCII = "       ((`\\\n" +
                 "            ___ \\\\ '--._\n" +

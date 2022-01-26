@@ -26,6 +26,7 @@ public abstract class VirtualPet {
     public abstract String potty();
     public abstract String play();
     public abstract String eat();
+    public abstract String drink();
     public abstract String ASCIIArt();
     public abstract String talking();
 

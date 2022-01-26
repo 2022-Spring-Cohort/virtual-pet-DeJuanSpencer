@@ -62,6 +62,4 @@ public class VirtualPetTest {
         //Assert
         assertEquals(10, result);
     }
-
-
 }

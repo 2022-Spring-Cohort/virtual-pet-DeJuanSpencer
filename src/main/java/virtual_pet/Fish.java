@@ -23,6 +23,11 @@ public class Fish extends VirtualPet {
     }
 
     @Override
+    public String drink() {
+      return null;
+    }
+
+    @Override
     public String ASCIIArt() {
         String animalASCII = "O     O           ,       \n" +
                 "  o o          .:/    \n" +
