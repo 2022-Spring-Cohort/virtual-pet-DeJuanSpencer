@@ -51,4 +51,9 @@ public class Cat extends VirtualPet {
         String speaking = "Meow. Meow. Meoowwww";
         return speaking;
     }
+
+    @Override
+    public String getLocation() {
+        return "Common room";
+    }
 }

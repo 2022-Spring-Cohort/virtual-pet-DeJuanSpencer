@@ -3,8 +3,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
+
     @Test
     public void testGetName() {
+
         //Arrange
         Dog myTest = new Dog("Brandy", "dog", "brown", 3, 10);
 
@@ -24,7 +26,7 @@ public class VirtualPetTest {
         String result = myTest.getAnimalType();
 
         //Assert
-        assertEquals("dog", result);
+        assertEquals("cat", result);
     }
 
     @Test

@@ -5,6 +5,10 @@ public class Bird extends VirtualPet {
         super(name, animalType, furColor, age, weight);
     }
 
+    public String fly() {
+        String flying = "*Flying*";
+        return flying;
+    }
     @Override
     public String potty() {
         String pottying = "*Splat*";
@@ -52,4 +56,12 @@ public class Bird extends VirtualPet {
         String speaking = "Tweet tweet tweet- tweet tweet...";
         return speaking;
     }
+
+    @Override
+    public String getLocation() {
+        return "Cage";
+    }
+
+
+
 }

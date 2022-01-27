@@ -44,4 +44,9 @@ public class Fish extends VirtualPet {
         String speaking = "*Bubbles*";
         return speaking;
     }
+
+    @Override
+    public String getLocation() {
+        return "Fish-tank";
+    }
 }

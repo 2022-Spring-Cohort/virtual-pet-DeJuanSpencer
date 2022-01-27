@@ -29,6 +29,7 @@ public abstract class VirtualPet {
     public abstract String drink();
     public abstract String ASCIIArt();
     public abstract String talking();
+    public abstract String getLocation();
 
     public String getName() {
         return name;
@@ -102,5 +103,7 @@ public abstract class VirtualPet {
         hello += "I am " + getWeight() + " lbs. ";
         return hello;
     }
+
+
 }
 

@@ -54,4 +54,9 @@ public class Rabbit extends VirtualPet {
         String speaking = "Buck buck meow";
         return speaking;
     }
+
+    @Override
+    public String getLocation() {
+        return "Cage";
+    }
 }
