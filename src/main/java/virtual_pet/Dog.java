@@ -56,4 +56,6 @@ public class Dog extends VirtualPet {
     public String getLocation() {
         return "Cage";
     }
+
+
 }

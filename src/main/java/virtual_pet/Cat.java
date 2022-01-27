@@ -56,4 +56,6 @@ public class Cat extends VirtualPet {
     public String getLocation() {
         return "Common room";
     }
+
+
 }
