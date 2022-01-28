@@ -14,6 +14,7 @@ public abstract class VirtualPet {
     public boolean wantsToPlay = false;
     public int wasteLevel = 0;
     public boolean needsToWaste = false;
+    public boolean animalNeedsSomething;
 
     public VirtualPet(String name, String animalType, String furColor, int age, double weight) {
         this.name = name;
@@ -104,8 +105,5 @@ public abstract class VirtualPet {
         hello += "I am " + getWeight() + " lbs. ";
         return hello;
     }
-
-
-
 }
 

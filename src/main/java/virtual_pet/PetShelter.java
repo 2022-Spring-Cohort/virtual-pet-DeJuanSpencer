@@ -13,7 +13,14 @@ public class PetShelter {
     private int numberOfRabbits;
     private int totalNumberOfAnimals;
     private String petShelterName;
+    private ArrayList<VirtualPet> birds = new ArrayList<>();
+    private ArrayList<VirtualPet> cats = new ArrayList<>();
+    private ArrayList<VirtualPet> dogs = new ArrayList<>();
+    private ArrayList<VirtualPet> fish = new ArrayList<>();
+    private ArrayList<VirtualPet> monkeys = new ArrayList<>();
+    private ArrayList<VirtualPet> rabbits = new ArrayList<>();
     private ArrayList<VirtualPet> allOfOurPets = new ArrayList<>();
+
 
     public PetShelter(String petShelterName) {
         this.numberOfBirds = numberOfBirds;
@@ -25,8 +32,6 @@ public class PetShelter {
         this.totalNumberOfAnimals = totalNumberOfAnimals;
 
     }
-
-
 
     public int getNumberOfBirds() {
         int numberOfBirds = 0;
@@ -159,7 +164,7 @@ public class PetShelter {
             int numberOfAnimals = input.nextInt();
             input.nextLine();
 
-            for (int count = 0; count < numberOfAnimals; count++) {
+            for (int count = 0; count < numberOfAnimals; count += 0) {
                 int nameIndex = rand.nextInt(animalNames.size());
                 String name = animalNames.get(nameIndex);
 
@@ -174,22 +179,34 @@ public class PetShelter {
 
                 if (animalType.equalsIgnoreCase("dog")) {
                     Dog pet = new Dog(name, animalType, furColor, age, weight);
+                    dogs.add(pet);
                     petList.add(pet);
+                    count++;
                 } else if (animalType.equalsIgnoreCase("cat")) {
                     Bird pet = new Bird(name, animalType, furColor, age, weight);
+                    birds.add(pet);
                     petList.add(pet);
+                    count++;
                 } else if (animalType.equalsIgnoreCase("bird")) {
                     Cat pet = new Cat(name, animalType, furColor, age, weight);
+                    cats.add(pet);
                     petList.add(pet);
+                    count++;
                 } else if (animalType.equalsIgnoreCase("fish")) {
                     Fish pet = new Fish(name, animalType, furColor, age, weight);
+                    fish.add(pet);
                     petList.add(pet);
+                    count++;
                 } else if (animalType.equalsIgnoreCase("monkey")) {
                     Monkey pet = new Monkey(name, animalType, furColor, age, weight);
+                    monkeys.add(pet);
                     petList.add(pet);
+                    count++;
                 } else if (animalType.equalsIgnoreCase("rabbit")) {
                     Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
+                    rabbits.add(pet);
                     petList.add(pet);
+                    count++;
                 }
             }
             return petList;
@@ -252,15 +269,67 @@ public class PetShelter {
     }
 
     //TODO Finish admit to shelter
-    public void admitToShelter() {
+    public void admitToShelter(VirtualPet petBeingGivenToShelter) {
         System.out.println("Oh hi there! No need to worry about a thing! We will take great care of it!");
-
+        allOfOurPets.add(petBeingGivenToShelter);
+        if(petBeingGivenToShelter.getAnimalType().equals("bird")){
+            birds.add(petBeingGivenToShelter);
+        }
+        if(petBeingGivenToShelter.getAnimalType().equals("cat")){
+            cats.add(petBeingGivenToShelter);
+        }
+        if(petBeingGivenToShelter.getAnimalType().equals("dog")){
+            dogs.add(petBeingGivenToShelter);
+        }
+        if(petBeingGivenToShelter.getAnimalType().equals("fish")){
+            fish.add(petBeingGivenToShelter);
+        }
+        if(petBeingGivenToShelter.getAnimalType().equals("monkey")){
+            monkeys.add(petBeingGivenToShelter);
+        }
+        if(petBeingGivenToShelter.getAnimalType().equals("rabbit")){
+            rabbits.add(petBeingGivenToShelter);
+        }
     }
 
     //TODO Finish get from shelter
-    public ArrayList<VirtualPet> getFromShelter() {
-        System.out.println("So, you want a pet? Which kind are you looking for?");
-        //TODO Add a list of options to pick from
-        return null;
+    public VirtualPet getFromShelter() {
+        VirtualPet petBeingAdopted = null;
+        boolean wantsToStay = true;
+
+        while (wantsToStay) {
+            Scanner input = new Scanner(System.in);
+            System.out.println("So, you want a pet? Which kind are you looking for?");
+            System.out.println("If you need help, here are some of our options!");
+            System.out.println("Press 1 if you want to look at the birds");
+            System.out.println("Press 2 if you want to look at the cats");
+            System.out.println("Press 3 if you want to look at the dogs");
+            System.out.println("Press 4 if you want to look at the fish");
+            System.out.println("Press 5 if you want to look at the monkeys");
+            System.out.println("Press 6 if you want to look at the rabbits");
+            int decision = input.nextInt();
+            input.nextLine();
+
+            if (decision == 1) {
+                System.out.println("Here are our birds!");
+
+            } else if (decision == 2) {
+                System.out.println("Here are our cats!");
+            } else if (decision == 3) {
+                System.out.println("Here are our dogs!");
+            } else if (decision == 4) {
+                System.out.println("Here are our fish!");
+            } else if (decision == 5) {
+                System.out.println("Here are our monkeys!");
+            } else if (decision == 6) {
+                System.out.println("Here are our rabbits!");
+            }
+
+            if (!wantsToStay) {
+                System.out.println("Thanks for stopping by!");
+            }
+
+        }
+        return petBeingAdopted;
     }
 }

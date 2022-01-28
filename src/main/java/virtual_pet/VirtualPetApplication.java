@@ -17,17 +17,21 @@ public class VirtualPetApplication {
         Random rand = new Random();
         PetShelter interactWithShelter = new PetShelter("We love pets! (We prawmise)");
         ArrayList<VirtualPet> pets = interactWithShelter.petRoster();
+        ArrayList<VirtualPet> yourPetsInGame = null;
         VirtualPet pet = pets.get(rand.nextInt(pets.size()));
 
 
 
 //TODO Add something to interact with the pet if it needs something
+        
         while (pet.isAlive) {
             int choice = -1;
-            while(choice!=0 ||  choice!=1){
+            while(choice!=0 &&  choice!=1){
                 System.out.println("Would you like to adopt a pet or place one into the shelter?");
                 System.out.println("Press 1 for adopt or press 2 to place pet into the shelter");
                 choice = input.nextInt();
+                yourPetsInGame.add(interactWithShelter.getFromShelter());
+                
             }
             if(choice==1){
                 System.out.println("Oh yay! Someone is going to have a very nice home!");
@@ -38,11 +42,11 @@ public class VirtualPetApplication {
                 System.out.println("No need to worry about a thing. All animals are our family! ^_^");
                 interactWithShelter.admitToShelter();
             }
-
+//TODO This looks a bit off. Consider adjustments
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
                 System.out.println("Uh-Oh! Time to get a new one!");
                 pet.isAlive = false;
-            } else if (pet.hungerLevel < 5 || pet.thirstLevel < 5) {
+            } else if (pet.tick()) {
                 String stats = pet.checkup();
                 System.out.println(stats);
                 ArrayList<String> interactionOptions = new ArrayList<String>();
