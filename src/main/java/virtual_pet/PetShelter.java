@@ -295,11 +295,11 @@ public class PetShelter {
     //TODO Finish get from shelter
     public VirtualPet getFromShelter(ArrayList<VirtualPet> generatedShelterAnimals) {
 
-
         VirtualPet petBeingAdopted = null;
         boolean wantsToStay = true;
 
         while (wantsToStay) {
+            Random rand = new Random();
             Scanner input = new Scanner(System.in);
             System.out.println("So, you want a pet? Which kind are you looking for?");
             System.out.println("If you need help, here are some of our options!");
@@ -310,39 +310,89 @@ public class PetShelter {
             System.out.println("Press 5 if you want to look at the monkeys");
             System.out.println("Press 6 if you want to look at the rabbits");
             System.out.println("Or press 0 if you want to leave!");
+
             int decision = input.nextInt();
             input.nextLine();
             if (decision == 0) {
                 wantsToStay=false;
             } else if (decision == 1) {
                 System.out.println("Here are our birds!");
-                String asciiArt = birds.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+
+                String animalGreeting =  birds.get(rand.nextInt(birds.size())).greeting();
+                System.out.println(animalGreeting);
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                    petBeingAdopted= birds.get(0);
+                    wantsToStay=false;
+
+                }
 
             } else if (decision == 2) {
                 System.out.println("Here are our cats!");
-                String asciiArt = cats.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+                String animalGreeting = cats.get(rand.nextInt(cats.size())).greeting();
+                System.out.println(animalGreeting);
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                    petBeingAdopted= cats.get(0);
+                    wantsToStay=false;
+                }
 
             } else if (decision == 3) {
                 System.out.println("Here are our dogs!");
-                String asciiArt = dogs.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+                String animalGreeting = dogs.get(rand.nextInt(dogs.size())).greeting();
+                System.out.println(animalGreeting);
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                    petBeingAdopted= dogs.get(0);
+                    wantsToStay=false;
+                }
 
             } else if (decision == 4) {
                 System.out.println("Here are our fish!");
-                String asciiArt = fish.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+                String animalGreeting = fish.get(rand.nextInt(fish.size())).greeting();
+                System.out.println(animalGreeting);
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                    petBeingAdopted= fish.get(0);
+                    wantsToStay=false;
+                }
 
             } else if (decision == 5) {
                 System.out.println("Here are our monkeys!");
-                String asciiArt = monkeys.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+                String animalGreeting = monkeys.get(rand.nextInt(monkeys.size())).greeting();
+                System.out.println(animalGreeting);
+
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                    petBeingAdopted= monkeys.get(0);
+                    wantsToStay=false;
+                }
+
 
             } else if (decision == 6) {
                 System.out.println("Here are our rabbits!");
-                String asciiArt = rabbits.get(0).ASCIIArt();
-                System.out.println(asciiArt);
+                String animalGreeting = rabbits.get(rand.nextInt(rabbits.size())).greeting();
+                System.out.println(animalGreeting);
+
+
+                System.out.println("Do you want to take this one home?");
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                input.nextLine();
+                if(decision==1){
+                   petBeingAdopted= rabbits.get(0);
+                    wantsToStay=false;
+                }
 
             }
 
