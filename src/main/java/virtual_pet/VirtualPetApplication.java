@@ -15,13 +15,15 @@ public class VirtualPetApplication {
     public void gameMethod() {
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
-        PetShelter interactWithShelter = new PetShelter("We love pets! (We prawmise)");
-        ArrayList<VirtualPet> pets = interactWithShelter.petRoster();
+        PetShelter thePetShelter = new PetShelter("We love pets! (We prawmise)");
+        ArrayList<VirtualPet> pets = thePetShelter.petRoster();
         ArrayList<VirtualPet> yourPetsInGame = null;
         VirtualPet pet = pets.get(rand.nextInt(pets.size()));
 
 
 //TODO Add something to interact with the pet if it needs something
+        //TODO In regards to this while loop below,
+        // there needs to be something that can stop the loop if the user prefers so
 
         while (pet.isAlive) {
             int choice = -1;
@@ -37,7 +39,10 @@ public class VirtualPetApplication {
                 System.out.println("Here are the pets you have so far...");
 
 
-                yourPetsInGame.add(interactWithShelter.getFromShelter());
+
+
+VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
+
 
 
             } else if (choice == 2) {
@@ -51,8 +56,13 @@ public class VirtualPetApplication {
                 System.out.println("Choose the number associated with your pet to surrender it I mean... to give it a new home...");
                 int decision = input.nextInt();
                 input.nextLine();
-                interactWithShelter.admitToShelter(yourPetsInGame.get(decision));
-                yourPetsInGame.remove(decision);
+                if(yourPetsInGame.size()==0){
+                    System.out.println("You don't have any pets to admit!");
+                }
+                else {
+                    thePetShelter.admitToShelter(yourPetsInGame.get(decision));
+                    yourPetsInGame.remove(decision);
+                }
             }
 //TODO This looks a bit off. Consider adjustments
             if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {

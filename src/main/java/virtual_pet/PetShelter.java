@@ -272,28 +272,30 @@ public class PetShelter {
     public void admitToShelter(VirtualPet petBeingGivenToShelter) {
         System.out.println("Oh hi there! No need to worry about a thing! We will take great care of it!");
         allOfOurPets.add(petBeingGivenToShelter);
-        if(petBeingGivenToShelter.getAnimalType().equals("bird")){
+        if (petBeingGivenToShelter.getAnimalType().equals("bird")) {
             birds.add(petBeingGivenToShelter);
         }
-        if(petBeingGivenToShelter.getAnimalType().equals("cat")){
+        if (petBeingGivenToShelter.getAnimalType().equals("cat")) {
             cats.add(petBeingGivenToShelter);
         }
-        if(petBeingGivenToShelter.getAnimalType().equals("dog")){
+        if (petBeingGivenToShelter.getAnimalType().equals("dog")) {
             dogs.add(petBeingGivenToShelter);
         }
-        if(petBeingGivenToShelter.getAnimalType().equals("fish")){
+        if (petBeingGivenToShelter.getAnimalType().equals("fish")) {
             fish.add(petBeingGivenToShelter);
         }
-        if(petBeingGivenToShelter.getAnimalType().equals("monkey")){
+        if (petBeingGivenToShelter.getAnimalType().equals("monkey")) {
             monkeys.add(petBeingGivenToShelter);
         }
-        if(petBeingGivenToShelter.getAnimalType().equals("rabbit")){
+        if (petBeingGivenToShelter.getAnimalType().equals("rabbit")) {
             rabbits.add(petBeingGivenToShelter);
         }
     }
 
     //TODO Finish get from shelter
-    public VirtualPet getFromShelter() {
+    public VirtualPet getFromShelter(ArrayList<VirtualPet> generatedShelterAnimals) {
+
+
         VirtualPet petBeingAdopted = null;
         boolean wantsToStay = true;
 
@@ -307,22 +309,41 @@ public class PetShelter {
             System.out.println("Press 4 if you want to look at the fish");
             System.out.println("Press 5 if you want to look at the monkeys");
             System.out.println("Press 6 if you want to look at the rabbits");
+            System.out.println("Or press 0 if you want to leave!");
             int decision = input.nextInt();
             input.nextLine();
-
-            if (decision == 1) {
+            if (decision == 0) {
+                wantsToStay=false;
+            } else if (decision == 1) {
                 System.out.println("Here are our birds!");
+                String asciiArt = birds.get(0).ASCIIArt();
+                System.out.println(asciiArt);
 
             } else if (decision == 2) {
                 System.out.println("Here are our cats!");
+                String asciiArt = cats.get(0).ASCIIArt();
+                System.out.println(asciiArt);
+
             } else if (decision == 3) {
                 System.out.println("Here are our dogs!");
+                String asciiArt = dogs.get(0).ASCIIArt();
+                System.out.println(asciiArt);
+
             } else if (decision == 4) {
                 System.out.println("Here are our fish!");
+                String asciiArt = fish.get(0).ASCIIArt();
+                System.out.println(asciiArt);
+
             } else if (decision == 5) {
                 System.out.println("Here are our monkeys!");
+                String asciiArt = monkeys.get(0).ASCIIArt();
+                System.out.println(asciiArt);
+
             } else if (decision == 6) {
                 System.out.println("Here are our rabbits!");
+                String asciiArt = rabbits.get(0).ASCIIArt();
+                System.out.println(asciiArt);
+
             }
 
             if (!wantsToStay) {
