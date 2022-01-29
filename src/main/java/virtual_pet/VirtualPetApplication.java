@@ -67,13 +67,12 @@ public class VirtualPetApplication {
                     pet.isAlive = false;
                 } else {
                     pet.tick();
-                    String stats = pet.checkup();
+                    String stats = yourPetsInGame.get(0).checkup();
                     System.out.println(stats);
                     ArrayList<String> interactionOptions = new ArrayList<String>();
                     interactionOptions.add("P");
                     interactionOptions.add("W");
                     interactionOptions.add("F");
-                    interactionOptions.add("Wr");
                     interactionOptions.add("N");
                     System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
                     String action = input.nextLine();
@@ -85,27 +84,27 @@ public class VirtualPetApplication {
                     }
 
                     if (action.equalsIgnoreCase("P")) {
-                        System.out.println("Playing!");
+
                         pet.thirstLevel++;
                         pet.boredomLevel--;
                         pet.hungerLevel++;
                         pet.wantsToPlay = false;
-                        String petIsplaying = pet.play();
+                        String petIsplaying = yourPetsInGame.get(0).play();
                         System.out.println(petIsplaying);
                     } else if (action.equalsIgnoreCase("W")) {
-                        System.out.println("Drinking water!");
+
                         pet.thirstLevel++;
                         pet.boredomLevel--;
                         pet.hungerLevel--;
-                        String petIsDrinking = pet.drink();
+                        String petIsDrinking = yourPetsInGame.get(0).drink();
                         System.out.println(petIsDrinking);
 
                     } else if (action.equalsIgnoreCase("F")) {
-                        System.out.println("Eating food!");
+
                         pet.thirstLevel--;
                         pet.boredomLevel--;
                         pet.hungerLevel++;
-                        String petIsEating = pet.eat();
+                        String petIsEating = yourPetsInGame.get(0).eat();
                         System.out.println(petIsEating);
 
                     } else if (action.equalsIgnoreCase("N")) {
