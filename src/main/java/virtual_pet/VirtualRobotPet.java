@@ -14,10 +14,10 @@ public abstract class VirtualRobotPet {
 
     //TODO Create some kinds of methods that addresses hunger, thirst etc....
 
-    public VirtualRobotPet(String name, String animalType, String furColor, int modelYear, double weight) {
+    public VirtualRobotPet(String name, String animalType, String color, int modelYear, double weight) {
         this.name = name;
         this.animalType = animalType;
-        this.color = furColor;
+        this.color = color;
         this.modelYear = modelYear;
         this.weight = weight;
     }
@@ -26,6 +26,7 @@ public abstract class VirtualRobotPet {
     public abstract String play();
 
     public abstract String getOiled();
+    public abstract String getCharged();
     public abstract String ASCIIArt();
     public abstract String talking();
     public abstract String getLocation();
