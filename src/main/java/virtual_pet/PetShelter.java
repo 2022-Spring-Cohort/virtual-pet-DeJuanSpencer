@@ -21,6 +21,8 @@ public class PetShelter {
     private ArrayList<VirtualPet> rabbits = new ArrayList<>();
     private ArrayList<VirtualPet> allOfOurPets = new ArrayList<>();
 
+    //TODO Create doctor method
+
 
     public PetShelter(String petShelterName) {
         this.numberOfBirds = numberOfBirds;
@@ -182,12 +184,12 @@ public class PetShelter {
                     dogs.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("cat")) {
+                } else if (animalType.equalsIgnoreCase("bird")) {
                     Bird pet = new Bird(name, animalType, furColor, age, weight);
                     birds.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("bird")) {
+                } else if (animalType.equalsIgnoreCase("cat")) {
                     Cat pet = new Cat(name, animalType, furColor, age, weight);
                     cats.add(pet);
                     petList.add(pet);
@@ -269,11 +271,13 @@ public class PetShelter {
     }
 
     //TODO Finish admit to shelter
-    public void admitToShelter(VirtualPet petBeingGivenToShelter) {
+    public void admitToShelter(VirtualPet petBeingGivenToShelter, ArrayList<VirtualPet> pets ) {
         System.out.println("Oh hi there! No need to worry about a thing! We will take great care of it!");
-        allOfOurPets.add(petBeingGivenToShelter);
+        pets.add(petBeingGivenToShelter);
         if (petBeingGivenToShelter.getAnimalType().equals("bird")) {
             birds.add(petBeingGivenToShelter);
+
+
         }
         if (petBeingGivenToShelter.getAnimalType().equals("cat")) {
             cats.add(petBeingGivenToShelter);

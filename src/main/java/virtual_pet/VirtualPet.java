@@ -15,6 +15,7 @@ public abstract class VirtualPet {
     public int wasteLevel = 0;
     public boolean needsToWaste = false;
     public boolean animalNeedsSomething;
+    //TODO Create some kinds of methods that addresses hunger, thirst etc....
 
     public VirtualPet(String name, String animalType, String furColor, int age, double weight) {
         this.name = name;
