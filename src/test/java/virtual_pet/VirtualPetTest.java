@@ -8,7 +8,7 @@ public class VirtualPetTest {
     public void testGetName() {
 
         //Arrange
-        Dog myTest = new Dog("Brandy", "dog", "brown", 3, 10);
+        Dog myTest = new Dog("Brandy", "dog", "brown", 3, 10, weight);
 
         //Action
         String result = myTest.getName();

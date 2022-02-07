@@ -7,7 +7,6 @@ import java.util.Random;
 public class VirtualPetApplication {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         VirtualPetApplication myGame = new VirtualPetApplication();
         myGame.gameMethod();
     }
@@ -17,10 +16,9 @@ public class VirtualPetApplication {
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
         PetShelter thePetShelter = new PetShelter("We love pets! (We prawmise)");
-        /*The pets variable below generates all pets to be used in the game loop.
-
+        /*
+        The pets variable below generates all pets to be used in the game loop.
         Error if number of animals generated are less than number of animals available when adopting.
-
         */
         ArrayList<VirtualPet> pets = thePetShelter.petRoster();
         ArrayList<VirtualPet> yourPetsInGame = new ArrayList<>();
@@ -33,18 +31,50 @@ public class VirtualPetApplication {
         In regards to this while loop below,
         there needs to be something that can stop the loop if the user prefers so
 */
-
+        int numberOfTimesPlayed = 0;
         while (play) {
+            numberOfTimesPlayed++;
+            int maxPetsToAdopt = numberOfTimesPlayed / 10;
+
+/*
+        TODO
+        User can adopt one more pet after each 10 times played
+*/
+
             int choice = -1;
-            while (choice != 0 && choice != 1 && choice != 2 && choice != 3) {
 
-                System.out.println("Would you like to adopt a pet or place one into the shelter?");
-                System.out.println("Press 1 for adopt, press 2 to place pet into the shelter,\n or press 3 to skip the shelter for now.");
-                System.out.println("If you want to quit, enter 0.");
-                choice = input.nextInt();
-                input.nextLine();
+            if (yourPetsInGame.size() == 0) {
+                while (choice != 0 && choice != 1) {
+                    System.out.println("Enter 1 to adopt a pet.");
+                    System.out.println("Or... if you want to quit, enter 0.");
+                    choice = input.nextInt();
+                    input.nextLine();
+                }
 
+            } else if (yourPetsInGame.size() > 0) {
+                if (maxPetsToAdopt - yourPetsInGame.size() > 0) {
+                    while (choice != 0 && choice != 1 && choice != 2 && choice != 3) {
+
+                        System.out.println("Would you like to adopt a pet or place one into the shelter?");
+                        System.out.println("Press 1 for adopt, press 2 to place pet into the shelter,\n or press 3 to skip the shelter for now.");
+                        System.out.println("If you want to quit, enter 0.");
+                        choice = input.nextInt();
+                        input.nextLine();
+
+                    }
+                } else if (maxPetsToAdopt - yourPetsInGame.size() == 0) {
+                    while (choice != 0 && choice != 2 && choice != 3) {
+
+                        System.out.println("Would you like to place a pet into the shelter?");
+                        System.out.println("2 to place pet into the shelter,\n or press 3 to skip the shelter for now.");
+                        System.out.println("If you want to quit, enter 0.");
+                        choice = input.nextInt();
+                        input.nextLine();
+                    }
+
+                }
             }
+
             if (choice == 0) {
                 System.out.println("Bye bye!");
                 play = false;
@@ -71,7 +101,6 @@ public class VirtualPetApplication {
 
                     if (yourPetsInGame.size() == 1) {
                         System.out.println("Here is your pet! This is your only one... are you sure you want to place them back into the shelter?");
-
                         String decision = "-";
                         while (!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
                             System.out.println("(Y/N)?");
@@ -90,20 +119,23 @@ public class VirtualPetApplication {
                         System.out.println("Choose the number associated with your pet to surrender it I mean... to give it a new home...");
                         int animalIDToGive = input.nextInt();
                         input.nextLine();
+                        /* TODO
+                          Ensure correct pet is adopted
+                         */
                         thePetShelter.admitToShelter(yourPetsInGame.get(animalIDToGive), pets);
                         yourPetsInGame.remove(animalIDToGive);
-
                     }
                 }
-
                     /*TODO
-                      This looks a bit off. Consider adjustments
 
+                      This looks a bit off. Consider adjustments
                       Anyway, this choice 3 gives the user the ability to interact with the pets
+
                      */
             } else if (choice == 3 && yourPetsInGame.size() > 0) {
                 if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
-                    System.out.println("Uh-Oh! Time to get a new one!");
+                    petDies(pet);
+                  //TODO verify correct pet dies
                     pet.isAlive = false;
 
                 } else {
@@ -131,7 +163,6 @@ public class VirtualPetApplication {
                     System.out.println("Do you want this action to affect all pets?");
                     System.out.println("Type 'Y' for yes or 'N' for no.");
                     String oneOrAll = input.nextLine();
-
 
 
                     if (action.equalsIgnoreCase("D")) {
@@ -239,6 +270,15 @@ public class VirtualPetApplication {
         guess.add("potty");
         return guess;
     }
+
+    public String petDies(VirtualPet pet) {
+        String result = "Your pet has died";
+        return result;
+    }
+
+    /*TODO
+    Create methods for all the interactions with the pets
+    */
 }
 
 

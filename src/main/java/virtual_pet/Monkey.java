@@ -1,8 +1,8 @@
 package virtual_pet;
 
 public class Monkey extends VirtualPet {
-    public Monkey(String name, String animalType, String furColor, int age, double weight) {
-        super(name, animalType, furColor, age, weight);
+    public Monkey(String name, String animalType, String furColor, int id, int age, double weight) {
+        super(name, animalType, furColor, id, age, weight);
     }
 
     @Override

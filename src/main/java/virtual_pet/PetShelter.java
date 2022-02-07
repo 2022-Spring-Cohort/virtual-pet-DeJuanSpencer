@@ -1,8 +1,6 @@
 package virtual_pet;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class PetShelter {
     private int numberOfBirds;
@@ -167,6 +165,7 @@ public class PetShelter {
             input.nextLine();
 
             for (int count = 0; count < numberOfAnimals; count += 0) {
+int id = count;
                 int nameIndex = rand.nextInt(animalNames.size());
                 String name = animalNames.get(nameIndex);
 
@@ -180,32 +179,32 @@ public class PetShelter {
                 double weight = rand.nextInt(50) + 1;
 
                 if (animalType.equalsIgnoreCase("dog")) {
-                    Dog pet = new Dog(name, animalType, furColor, age, weight);
+                    Dog pet = new Dog(name, animalType, furColor,id, age, weight);
                     dogs.add(pet);
                     petList.add(pet);
                     count++;
                 } else if (animalType.equalsIgnoreCase("bird")) {
-                    Bird pet = new Bird(name, animalType, furColor, age, weight);
+                    Bird pet = new Bird(name, animalType, furColor,id, age, weight);
                     birds.add(pet);
                     petList.add(pet);
                     count++;
                 } else if (animalType.equalsIgnoreCase("cat")) {
-                    Cat pet = new Cat(name, animalType, furColor, age, weight);
+                    Cat pet = new Cat(name, animalType, furColor,id, age, weight);
                     cats.add(pet);
                     petList.add(pet);
                     count++;
                 } else if (animalType.equalsIgnoreCase("fish")) {
-                    Fish pet = new Fish(name, animalType, furColor, age, weight);
+                    Fish pet = new Fish(name, animalType, furColor,id, age, weight);
                     fish.add(pet);
                     petList.add(pet);
                     count++;
                 } else if (animalType.equalsIgnoreCase("monkey")) {
-                    Monkey pet = new Monkey(name, animalType, furColor, age, weight);
+                    Monkey pet = new Monkey(name, animalType, furColor,id, age, weight);
                     monkeys.add(pet);
                     petList.add(pet);
                     count++;
                 } else if (animalType.equalsIgnoreCase("rabbit")) {
-                    Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
+                    Rabbit pet = new Rabbit(name, animalType, furColor,id, age, weight);
                     rabbits.add(pet);
                     petList.add(pet);
                     count++;
@@ -238,6 +237,20 @@ public class PetShelter {
 
             System.out.println("Fur Color?");
             String furColor = input.nextLine();
+            Set<Integer> idNumbers = new HashSet<>();
+            idNumbers.add((int)Math.random());
+            int id = (int)Math.random();
+
+            /*TODO
+            *
+            * Find way to prevent animals from assuming already used IDs
+            *
+            * */
+           while(idNumbers.contains(id)){
+               id = (int)Math.random();
+               idNumbers.add(id);
+           }
+            idNumbers.add(id);
 
             System.out.println("Age?");
             int age = input.nextInt();
@@ -247,22 +260,22 @@ public class PetShelter {
 
             input.nextLine();
             if (animalType.equalsIgnoreCase("dog")) {
-                Dog pet = new Dog(name, animalType, furColor, age, weight);
+                Dog pet = new Dog(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             } else if (animalType.equalsIgnoreCase("cat")) {
-                Bird pet = new Bird(name, animalType, furColor, age, weight);
+                Bird pet = new Bird(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             } else if (animalType.equalsIgnoreCase("bird")) {
-                Cat pet = new Cat(name, animalType, furColor, age, weight);
+                Cat pet = new Cat(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             } else if (animalType.equalsIgnoreCase("fish")) {
-                Fish pet = new Fish(name, animalType, furColor, age, weight);
+                Fish pet = new Fish(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             } else if (animalType.equalsIgnoreCase("monkey")) {
-                Monkey pet = new Monkey(name, animalType, furColor, age, weight);
+                Monkey pet = new Monkey(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             } else if (animalType.equalsIgnoreCase("rabbit")) {
-                Rabbit pet = new Rabbit(name, animalType, furColor, age, weight);
+                Rabbit pet = new Rabbit(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             }
             return petList;

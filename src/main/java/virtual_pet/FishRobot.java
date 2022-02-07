@@ -22,7 +22,21 @@ public class FishRobot extends VirtualRobotPet {
 
     @Override
     public String ASCIIArt() {
-        return null;
+        String result = "           _           _   \n" +
+                "          | |         | |  \n" +
+                " _ __ ___ | |__   ___ | |_ \n" +
+                "| '__/ _ \\| '_ \\ / _ \\| __|\n" +
+                "| | | (_) | |_) | (_) | |_ \n" +
+                "|_|  \\___/|_.__/ \\___/ \\__|\n" +
+                "                           \n";
+
+        result+="|\\    \\ \\ \\ \\ \\ \\ \\      __   \n" +
+                "|  \\    \\ \\ \\ \\ \\ \\ \\   | O~-_\n" +
+                "|   >----|-|-|-|-|-|-|--|  __/\n" +
+                "|  /    / / / / / / /   |__\\  \n" +
+                "|/     / / / / / / /";
+
+        return result;
     }
 
     @Override

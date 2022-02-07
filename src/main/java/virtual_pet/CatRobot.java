@@ -22,7 +22,19 @@ public class CatRobot extends VirtualRobotPet {
 
     @Override
     public String ASCIIArt() {
-        return null;
+        String result = "           _           _   \n" +
+                "          | |         | |  \n" +
+                " _ __ ___ | |__   ___ | |_ \n" +
+                "| '__/ _ \\| '_ \\ / _ \\| __|\n" +
+                "| | | (_) | |_) | (_) | |_ \n" +
+                "|_|  \\___/|_.__/ \\___/ \\__|\n" +
+                "                           \n";
+
+        result+=" /\\_/\\\n" +
+                "( o.o )\n" +
+                " > ^ <";
+
+        return result;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package virtual_pet;
 
 public class Bird extends VirtualPet implements Flight{
-    public Bird(String name, String animalType, String furColor, int age, double weight) {
-        super(name, animalType, furColor, age, weight);
+    public Bird(String name, String animalType, String furColor, int age, int id, double weight) {
+        super(name, animalType, furColor, id, age, weight);
     }
 
 

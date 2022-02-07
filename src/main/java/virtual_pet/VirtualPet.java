@@ -4,6 +4,7 @@ public abstract class VirtualPet {
     private String animalType;
     private String furColor;
     private int age;
+    private int id;
     private double weight;
     public boolean isAlive = true;
     public boolean isHungry = false;
@@ -15,12 +16,14 @@ public abstract class VirtualPet {
     public int wasteLevel = 0;
     public boolean needsToWaste = false;
     public boolean animalNeedsSomething;
-    //TODO Create some kinds of methods that addresses hunger, thirst etc....
+    //TODO Create a soiled cage/litter box
+    //TODO Add an ascii stats box
 
-    public VirtualPet(String name, String animalType, String furColor, int age, double weight) {
+    public VirtualPet(String name, String animalType, String furColor, int id, int age, double weight) {
         this.name = name;
         this.animalType = animalType;
         this.furColor = furColor;
+        this.id = id;
         this.age = age;
         this.weight = weight;
     }
@@ -45,6 +48,9 @@ public abstract class VirtualPet {
     public String getFurColor() {
         return furColor;
     }
+    public int getID() {
+        return id;
+    }
 
     public int getAge() {
         return age;
@@ -63,6 +69,9 @@ public abstract class VirtualPet {
         if (wasteLevel >= 3) {
             animalNeedsSomething = true;
             talking();
+            if(wasteLevel==5){
+                System.out.println(soiledCage());
+            }
         }
         if (thirstLevel >= 3) {
             animalNeedsSomething = true;
@@ -105,6 +114,12 @@ public abstract class VirtualPet {
         hello += "I am " + getAge() + " years old. ";
         hello += "I am " + getWeight() + " lbs. ";
         return hello;
+    }
+    public String soiledCage() {
+        String result = this.ASCIIArt();
+        result+=this.potty();
+        this.wasteLevel=0;
+        return result;
     }
 }
 
