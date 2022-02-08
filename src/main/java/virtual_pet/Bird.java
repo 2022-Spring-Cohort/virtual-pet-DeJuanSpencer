@@ -1,10 +1,11 @@
 package virtual_pet;
 
-public class Bird extends VirtualPet implements Flight {
-    public Bird(String name, String animalType, String furColor, int age, int id, double weight) {
-        super(name, animalType, furColor, id, age, weight);
-    }
+public class Bird extends VirtualOrganicPet implements Flight {
 
+
+    public Bird(String name, String animalType, int id, double weight, String furColor, int age) {
+        super(name, animalType, id, weight, furColor, age);
+    }
 
     @Override
     public String potty() {

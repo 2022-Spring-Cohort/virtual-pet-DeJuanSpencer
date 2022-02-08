@@ -1,8 +1,10 @@
 package virtual_pet;
 
 public class BirdRobot extends VirtualRobotPet{
-    public BirdRobot(String name, String animalType, String color, int modelYear, double weight) {
-        super(name, animalType, color, modelYear, weight);
+
+
+    public BirdRobot(String name, String animalType, int id, double weight, String color, int modelYear) {
+        super(name, animalType, id, weight, color, modelYear);
     }
 
     @Override

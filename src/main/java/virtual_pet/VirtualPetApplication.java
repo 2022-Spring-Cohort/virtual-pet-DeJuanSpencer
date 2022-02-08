@@ -126,134 +126,147 @@ public class VirtualPetApplication {
 
 */
             else if (choice == 3 && yourPetsInGame.size() > 0) {
-                if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
-                    petDies(pet);
-                    pet.isAlive = false;
 
-                }
-                else {
-                    for (VirtualPet myPet : yourPetsInGame) {
-                        myPet.tick();
+                pet = yourPetsInGame.get(rand.nextInt(yourPetsInGame.size()));
+
+
+                if (pet.getIsOrganic()) {
+
+
+                    if ((((VirtualOrganicPet) pet).hungerLevel >= 5 || ((VirtualOrganicPet) pet).thirstLevel >= 5)) {
+                        petDies(pet);
+                        ((VirtualOrganicPet) pet).isAlive = false;
+
                     }
-                    String stats = yourPetsInGame.get(0).checkup();
-                    System.out.println(stats);
-                    ArrayList<String> interactionOptions = new ArrayList<>();
-                    interactionOptions.add("D");
-                    interactionOptions.add("P");
-                    interactionOptions.add("W");
-                    interactionOptions.add("F");
-                    interactionOptions.add("N");
-                    System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
-                    String action = input.nextLine();
+                    else {
+                        for (VirtualPet myPet : yourPetsInGame) {
+                            myPet.tick();
+                        }
+                        String stats = ((VirtualOrganicPet)pet).checkup();
+                        System.out.println(stats);
+                        ArrayList<String> interactionOptions = new ArrayList<>();
+                        interactionOptions.add("D");
+                        interactionOptions.add("P");
+                        interactionOptions.add("W");
+                        interactionOptions.add("F");
+                        interactionOptions.add("N");
+                        System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
+                        String action = input.nextLine();
 
                         /* TODO
                         Create an array of action steps to interact with the animal
                          */
-                    while (action.equalsIgnoreCase("help")) {
-                        System.out.println("D for doctor.\n P for Play.\n W for water. \n F for food.\n N for nothing.");
-                        action = input.nextLine();
-                    }
-                    System.out.println("Do you want this action to affect all pets?");
-                    System.out.println("Type 'Y' for yes or 'N' for no.");
-                    String oneOrAll = input.nextLine();
-
-
-                    if (action.equalsIgnoreCase("D")) {
-
-                        if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (VirtualPet aPet : yourPetsInGame) {
-
-                                aPet.thirstLevel = 0;
-                                aPet.boredomLevel = 0;
-                                aPet.hungerLevel = 0;
-                                aPet.wantsToPlay = false;
-                            }
-                            System.out.println("All pets are healed!");
+                        while (action.equalsIgnoreCase("help")) {
+                            System.out.println("D for doctor.\n P for Play.\n W for water. \n F for food.\n N for nothing.");
+                            action = input.nextLine();
                         }
-                        else if (oneOrAll.equalsIgnoreCase("n")) {
-                            pet.thirstLevel = 0;
-                            pet.boredomLevel = 0;
-                            pet.hungerLevel = 0;
-                            pet.wantsToPlay = false;
+                        System.out.println("Do you want this action to affect all pets?");
+                        System.out.println("Type 'Y' for yes or 'N' for no.");
+                        String oneOrAll = input.nextLine();
+
+
+                        if (action.equalsIgnoreCase("D")) {
+
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourPetsInGame) {
+
+                                    ((VirtualOrganicPet)aPet).thirstLevel = 0;
+                                    ((VirtualOrganicPet)aPet).boredomLevel = 0;
+                                    ((VirtualOrganicPet)aPet).hungerLevel = 0;
+                                    ((VirtualOrganicPet)aPet).wantsToPlay = false;
+                                }
+                                System.out.println("All pets are healed!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualOrganicPet)pet).thirstLevel = 0;
+                                ((VirtualOrganicPet)pet).boredomLevel = 0;
+                                ((VirtualOrganicPet)pet).hungerLevel = 0;
+                                ((VirtualOrganicPet)pet).wantsToPlay = false;
                             /* TODO
                             Create a method for going to the doctor
                             String animalTalks = pet.talking();
                             System.out.println(animalTalks);
                             */
 
-                        }
-                        System.out.println("Your pet has been healed!");
+                            }
+                            System.out.println("Your pet has been healed!");
 
-                    }
-                    else if (action.equalsIgnoreCase("P")) {
+                        }
+                        else if (action.equalsIgnoreCase("P")) {
 
-                        if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (VirtualPet aPet : yourPetsInGame) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourPetsInGame) {
 
-                                aPet.thirstLevel++;
-                                aPet.boredomLevel--;
-                                aPet.hungerLevel++;
-                                aPet.wantsToPlay = false;
+                                    ((VirtualOrganicPet)aPet).thirstLevel++;
+                                    ((VirtualOrganicPet)aPet).boredomLevel--;
+                                    ((VirtualOrganicPet)aPet).hungerLevel++;
+                                    ((VirtualOrganicPet)aPet).wantsToPlay = false;
+                                }
+                                System.out.println("All pets are playing!");
                             }
-                            System.out.println("All pets are playing!");
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualOrganicPet)pet).thirstLevel++;
+                                ((VirtualOrganicPet)pet).boredomLevel--;
+                                ((VirtualOrganicPet)pet).hungerLevel++;
+                                ((VirtualOrganicPet)pet).wantsToPlay = false;
+                                String petIsplaying = ((VirtualOrganicPet)pet).play();
+                                System.out.println(petIsplaying);
+                            }
                         }
-                        else if (oneOrAll.equalsIgnoreCase("n")) {
-                            pet.thirstLevel++;
-                            pet.boredomLevel--;
-                            pet.hungerLevel++;
-                            pet.wantsToPlay = false;
-                            String petIsplaying = yourPetsInGame.get(0).play();
-                            System.out.println(petIsplaying);
+                        else if (action.equalsIgnoreCase("W")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourPetsInGame) {
+                                    ((VirtualOrganicPet)aPet).thirstLevel = 0;
+                                    ((VirtualOrganicPet)aPet).wasteLevel++;
+                                }
+                                System.out.println("All pets have been \"watered\"!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualOrganicPet)pet).thirstLevel = 0;
+                                ((VirtualOrganicPet)pet).wasteLevel++;
+                                System.out.println("Your pet has been \"watered\"!");
+                            }
+                        }
+                        else if (action.equalsIgnoreCase("F")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourPetsInGame) {
+                                    ((VirtualOrganicPet)aPet).thirstLevel++;
+                                    ((VirtualOrganicPet)aPet).hungerLevel--;
+                                    ((VirtualOrganicPet)aPet).wasteLevel++;
+                                }
+                                System.out.println("All pets have been fed!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualOrganicPet)pet).thirstLevel++;
+                                ((VirtualOrganicPet)pet).hungerLevel--;
+                                ((VirtualOrganicPet)pet).wasteLevel++;
+                                System.out.println("Your pet has been fed!");
+                            }
+                        }
+                        else if (action.equalsIgnoreCase("N")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourPetsInGame) {
+                                    ((VirtualOrganicPet)aPet).thirstLevel++;
+                                    ((VirtualOrganicPet)aPet).boredomLevel++;
+                                    ((VirtualOrganicPet)aPet).hungerLevel++;
+                                    ((VirtualOrganicPet)aPet).wantsToPlay = true;
+                                }
+                                System.out.println("Doing nothing...");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                System.out.println("Doing nothing...");
+                                ((VirtualOrganicPet)pet).thirstLevel++;
+                                ((VirtualOrganicPet)pet).boredomLevel++;
+                                ((VirtualOrganicPet)pet).hungerLevel++;
+                                ((VirtualOrganicPet)pet).wantsToPlay = true;
+                            }
                         }
                     }
-                    else if (action.equalsIgnoreCase("W")) {
-                        if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (VirtualPet aPet : yourPetsInGame) {
-                                aPet.thirstLevel = 0;
-                                aPet.wasteLevel++;
-                            }
-                            System.out.println("All pets have been \"watered\"!");
-                        }
-                        else if (oneOrAll.equalsIgnoreCase("n")) {
-                            pet.thirstLevel = 0;
-                            pet.wasteLevel++;
-                            System.out.println("Your pet has been \"watered\"!");
-                        }
-                    }
-                    else if (action.equalsIgnoreCase("F")) {
-                        if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (VirtualPet aPet : yourPetsInGame) {
-                                aPet.thirstLevel++;
-                                aPet.hungerLevel--;
-                                aPet.wasteLevel++;
-                            }
-                            System.out.println("All pets have been fed!");
-                        }
-                        else if (oneOrAll.equalsIgnoreCase("n")) {
-                            pet.thirstLevel++;
-                            pet.hungerLevel--;
-                            pet.wasteLevel++;
-                            System.out.println("Your pet has been fed!");
-                        }
-                    }
-                    else if (action.equalsIgnoreCase("N")) {
-                        if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (VirtualPet aPet : yourPetsInGame) {
-                                aPet.thirstLevel++;
-                                aPet.boredomLevel++;
-                                aPet.hungerLevel++;
-                                aPet.wantsToPlay = true;
-                            }
-                            System.out.println("Doing nothing...");
-                        }
-                        else if (oneOrAll.equalsIgnoreCase("n")) {
-                            System.out.println("Doing nothing...");
-                            pet.thirstLevel++;
-                            pet.boredomLevel++;
-                            pet.hungerLevel++;
-                            pet.wantsToPlay = true;
-                        }
-                    }
+                }
+                /*TODO
+                *  Finish robot pet interaction*/
+                else if (!pet.getIsOrganic()) {
+
                 }
             }
         }
