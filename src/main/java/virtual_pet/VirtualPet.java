@@ -1,4 +1,5 @@
 package virtual_pet;
+
 public abstract class VirtualPet {
     private String name;
     private String animalType;
@@ -29,11 +30,17 @@ public abstract class VirtualPet {
     }
 
     public abstract String potty();
+
     public abstract String play();
+
     public abstract String eat();
+
     public abstract String drink();
+
     public abstract String ASCIIArt();
+
     public abstract String talking();
+
     public abstract String getLocation();
 
 
@@ -48,6 +55,7 @@ public abstract class VirtualPet {
     public String getFurColor() {
         return furColor;
     }
+
     public int getID() {
         return id;
     }
@@ -69,7 +77,7 @@ public abstract class VirtualPet {
         if (wasteLevel >= 3) {
             animalNeedsSomething = true;
             talking();
-            if(wasteLevel==5){
+            if (wasteLevel == 5) {
                 System.out.println(soiledCage());
             }
         }
@@ -115,10 +123,11 @@ public abstract class VirtualPet {
         hello += "I am " + getWeight() + " lbs. ";
         return hello;
     }
+
     public String soiledCage() {
         String result = this.ASCIIArt();
-        result+=this.potty();
-        this.wasteLevel=0;
+        result += this.potty();
+        this.wasteLevel = 0;
         return result;
     }
 }

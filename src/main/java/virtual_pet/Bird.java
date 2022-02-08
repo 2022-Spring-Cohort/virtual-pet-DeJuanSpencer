@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public class Bird extends VirtualPet implements Flight{
+public class Bird extends VirtualPet implements Flight {
     public Bird(String name, String animalType, String furColor, int age, int id, double weight) {
         super(name, animalType, furColor, id, age, weight);
     }
@@ -62,13 +62,13 @@ public class Bird extends VirtualPet implements Flight{
 
     @Override
     public String flyAround() {
-String flyingAround = "*Woosh*";
-return flyingAround;
+        String flyingAround = "*Woosh*";
+        return flyingAround;
     }
 
     @Override
     public String flyHome() {
-String flyHome = "*Wooosh*";
+        String flyHome = "*Wooosh*";
 
         return null;
     }

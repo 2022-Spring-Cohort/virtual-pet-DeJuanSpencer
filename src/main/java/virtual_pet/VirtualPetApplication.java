@@ -24,25 +24,17 @@ public class VirtualPetApplication {
         ArrayList<VirtualPet> yourPetsInGame = new ArrayList<>();
         VirtualPet pet = pets.get(rand.nextInt(pets.size()));
 
-
 /*
         TODO
         Add something to interact with the pet if it needs something
-        In regards to this while loop below,
-        there needs to be something that can stop the loop if the user prefers so
+
+        User can adopt one more pet after each 3 times played
 */
         int numberOfTimesPlayed = 0;
         while (play) {
             numberOfTimesPlayed++;
-            int maxPetsToAdopt = numberOfTimesPlayed / 10;
-
-/*
-        TODO
-        User can adopt one more pet after each 10 times played
-*/
-
+            int maxPetsToAdopt = numberOfTimesPlayed / 3;
             int choice = -1;
-
             if (yourPetsInGame.size() == 0) {
                 while (choice != 0 && choice != 1) {
                     System.out.println("Enter 1 to adopt a pet.");
@@ -50,8 +42,8 @@ public class VirtualPetApplication {
                     choice = input.nextInt();
                     input.nextLine();
                 }
-
-            } else if (yourPetsInGame.size() > 0) {
+            }
+            else if (yourPetsInGame.size() > 0) {
                 if (maxPetsToAdopt - yourPetsInGame.size() > 0) {
                     while (choice != 0 && choice != 1 && choice != 2 && choice != 3) {
 
@@ -60,9 +52,9 @@ public class VirtualPetApplication {
                         System.out.println("If you want to quit, enter 0.");
                         choice = input.nextInt();
                         input.nextLine();
-
                     }
-                } else if (maxPetsToAdopt - yourPetsInGame.size() == 0) {
+                }
+                else if (maxPetsToAdopt - yourPetsInGame.size() == 0) {
                     while (choice != 0 && choice != 2 && choice != 3) {
 
                         System.out.println("Would you like to place a pet into the shelter?");
@@ -71,7 +63,6 @@ public class VirtualPetApplication {
                         choice = input.nextInt();
                         input.nextLine();
                     }
-
                 }
             }
 
@@ -79,72 +70,74 @@ public class VirtualPetApplication {
                 System.out.println("Bye bye!");
                 play = false;
             }
-
-            if (choice == 1) {
+            else if (choice == 1) {
                 System.out.println("Oh yay! Someone is going to have a very nice home!");
-                /*
+/*
 
                  This petShelter method uses the previously generated animals
                  as a parameter to be used specifically for shelter interaction.
                  Not used for animal generation for play.
 
-                 */
+*/
                 VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
                 yourPetsInGame.add(adoptedPet);
-            } else if (choice == 2) {
-                if (yourPetsInGame.size() == 0) {
-                    System.out.println("This establishment doesn't admit imaginary animals!");
-                    System.out.println("Maybe you'd like to adopt instead?\n");
-                } else {
-                    System.out.println("No need to worry about a thing. All animals are our family! ^_^");
-                    int animalID = -1;
+            }
+            else if (choice == 2) {
+                System.out.println("No need to worry about a thing. All animals are our family! ^_^");
 
-                    if (yourPetsInGame.size() == 1) {
-                        System.out.println("Here is your pet! This is your only one... are you sure you want to place them back into the shelter?");
-                        String decision = "-";
-                        while (!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
-                            System.out.println("(Y/N)?");
-                            decision = input.nextLine();
-                        }
-                        if (decision.equalsIgnoreCase("Y")) {
-                            thePetShelter.admitToShelter(yourPetsInGame.get(0), pets);
-                            yourPetsInGame.remove(0);
-                        }
 
-                    } else if (yourPetsInGame.size() > 1) {
-                        for (VirtualPet aPet : yourPetsInGame) {
-                            System.out.printf("Your pets are listed here by number. Enter their corresponding number to place them into the shelter. %d: %s", animalID, yourPetsInGame.get(animalID));
-                            animalID++;
-                        }
-                        System.out.println("Choose the number associated with your pet to surrender it I mean... to give it a new home...");
-                        int animalIDToGive = input.nextInt();
-                        input.nextLine();
-                        /* TODO
-                          Ensure correct pet is adopted
-                         */
-                        thePetShelter.admitToShelter(yourPetsInGame.get(animalIDToGive), pets);
-                        yourPetsInGame.remove(animalIDToGive);
+                if (yourPetsInGame.size() == 1) {
+                    System.out.println("Here is your pet! This is your only one... are you sure you want to place them back into the shelter?");
+                    String decision = "-";
+                    while (!decision.equalsIgnoreCase("Y") && !decision.equalsIgnoreCase("N")) {
+                        System.out.println("(Y/N)?");
+                        decision = input.nextLine();
                     }
+                    if (decision.equalsIgnoreCase("Y")) {
+                        thePetShelter.admitToShelter(yourPetsInGame.get(0), pets);
+                        yourPetsInGame.remove(0);
+                    }
+
                 }
-                    /*TODO
+                else if (yourPetsInGame.size() > 1) {
+                    for (VirtualPet aPet : yourPetsInGame) {
+                        System.out.printf("Your pets are listed here by number. Enter their corresponding ID to place them into the shelter: %s\n", aPet.toString());
+                    }
+                    System.out.println("Choose the ID associated with your pet to surrender it I mean... to give it a new home...");
+                    int animalIDToGive = -1;
+                    boolean matchNotFound = true;
+                    while (matchNotFound) {
+                        animalIDToGive = input.nextInt();
+                        input.nextLine();
+                        for (VirtualPet aPet : yourPetsInGame) {
+                            if (aPet.getID() == animalIDToGive) {
+                                thePetShelter.admitToShelter(aPet, pets);
+                                yourPetsInGame.remove(aPet);
+                                matchNotFound = false;
+                            }
+                        }
+                    }
 
-                      This looks a bit off. Consider adjustments
-                      Anyway, this choice 3 gives the user the ability to interact with the pets
+                }
 
-                     */
-            } else if (choice == 3 && yourPetsInGame.size() > 0) {
+            }
+/*          TODO
+            This looks a bit off. Consider adjustments
+
+*/
+            else if (choice == 3 && yourPetsInGame.size() > 0) {
                 if (pet.hungerLevel >= 5 || pet.thirstLevel >= 5) {
                     petDies(pet);
-                  //TODO verify correct pet dies
                     pet.isAlive = false;
 
-                } else {
+                }
+                else {
                     for (VirtualPet myPet : yourPetsInGame) {
                         myPet.tick();
                     }
                     String stats = yourPetsInGame.get(0).checkup();
                     System.out.println(stats);
-                    ArrayList<String> interactionOptions = new ArrayList<String>();
+                    ArrayList<String> interactionOptions = new ArrayList<>();
                     interactionOptions.add("D");
                     interactionOptions.add("P");
                     interactionOptions.add("W");
@@ -168,15 +161,16 @@ public class VirtualPetApplication {
                     if (action.equalsIgnoreCase("D")) {
 
                         if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (int count = 0; count < yourPetsInGame.size(); count++) {
+                            for (VirtualPet aPet : yourPetsInGame) {
 
-                                yourPetsInGame.get(count).thirstLevel = 0;
-                                yourPetsInGame.get(count).boredomLevel = 0;
-                                yourPetsInGame.get(count).hungerLevel = 0;
-                                yourPetsInGame.get(count).wantsToPlay = false;
-                                System.out.println("All pets are healed!");
+                                aPet.thirstLevel = 0;
+                                aPet.boredomLevel = 0;
+                                aPet.hungerLevel = 0;
+                                aPet.wantsToPlay = false;
                             }
-                        } else if (oneOrAll.equalsIgnoreCase("n")) {
+                            System.out.println("All pets are healed!");
+                        }
+                        else if (oneOrAll.equalsIgnoreCase("n")) {
                             pet.thirstLevel = 0;
                             pet.boredomLevel = 0;
                             pet.hungerLevel = 0;
@@ -186,22 +180,24 @@ public class VirtualPetApplication {
                             String animalTalks = pet.talking();
                             System.out.println(animalTalks);
                             */
-                            System.out.println("Your pet has been healed!");
+
                         }
+                        System.out.println("Your pet has been healed!");
 
-
-                    } else if (action.equalsIgnoreCase("P")) {
+                    }
+                    else if (action.equalsIgnoreCase("P")) {
 
                         if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (int count = 0; count < yourPetsInGame.size(); count++) {
+                            for (VirtualPet aPet : yourPetsInGame) {
 
-                                yourPetsInGame.get(count).thirstLevel++;
-                                yourPetsInGame.get(count).boredomLevel--;
-                                yourPetsInGame.get(count).hungerLevel++;
-                                yourPetsInGame.get(count).wantsToPlay = false;
-                                System.out.println("All pets are playing!");
+                                aPet.thirstLevel++;
+                                aPet.boredomLevel--;
+                                aPet.hungerLevel++;
+                                aPet.wantsToPlay = false;
                             }
-                        } else if (oneOrAll.equalsIgnoreCase("n")) {
+                            System.out.println("All pets are playing!");
+                        }
+                        else if (oneOrAll.equalsIgnoreCase("n")) {
                             pet.thirstLevel++;
                             pet.boredomLevel--;
                             pet.hungerLevel++;
@@ -209,43 +205,48 @@ public class VirtualPetApplication {
                             String petIsplaying = yourPetsInGame.get(0).play();
                             System.out.println(petIsplaying);
                         }
-                    } else if (action.equalsIgnoreCase("W")) {
-
-
+                    }
+                    else if (action.equalsIgnoreCase("W")) {
                         if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (int count = 0; count < yourPetsInGame.size(); count++) {
-                                yourPetsInGame.get(count).thirstLevel = 0;
-                                yourPetsInGame.get(count).boredomLevel = 0;
-                                yourPetsInGame.get(count).hungerLevel = 0;
-                                System.out.println("All pets have been \"watered\"!");
+                            for (VirtualPet aPet : yourPetsInGame) {
+                                aPet.thirstLevel = 0;
+                                aPet.wasteLevel++;
                             }
-
-                        } else if (oneOrAll.equalsIgnoreCase("n")) {
+                            System.out.println("All pets have been \"watered\"!");
+                        }
+                        else if (oneOrAll.equalsIgnoreCase("n")) {
                             pet.thirstLevel = 0;
-                            pet.boredomLevel = 0;
-                            pet.hungerLevel = 0;
+                            pet.wasteLevel++;
                             System.out.println("Your pet has been \"watered\"!");
                         }
-                    } else if (action.equalsIgnoreCase("F")) {
-
+                    }
+                    else if (action.equalsIgnoreCase("F")) {
                         if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (int count = 0; count < yourPetsInGame.size(); count++) {
-                                yourPetsInGame.get(count).thirstLevel--;
-                                yourPetsInGame.get(count).boredomLevel--;
-                                yourPetsInGame.get(count).hungerLevel++;
-                                System.out.println("All pets have been fed!");
+                            for (VirtualPet aPet : yourPetsInGame) {
+                                aPet.thirstLevel++;
+                                aPet.hungerLevel--;
+                                aPet.wasteLevel++;
                             }
+                            System.out.println("All pets have been fed!");
                         }
-                    } else if (action.equalsIgnoreCase("N")) {
+                        else if (oneOrAll.equalsIgnoreCase("n")) {
+                            pet.thirstLevel++;
+                            pet.hungerLevel--;
+                            pet.wasteLevel++;
+                            System.out.println("Your pet has been fed!");
+                        }
+                    }
+                    else if (action.equalsIgnoreCase("N")) {
                         if (oneOrAll.equalsIgnoreCase("y")) {
-                            for (int count = 0; count < yourPetsInGame.size(); count++) {
-                                System.out.println("Doing nothing...");
-                                yourPetsInGame.get(count).thirstLevel++;
-                                yourPetsInGame.get(count).boredomLevel++;
-                                yourPetsInGame.get(count).hungerLevel++;
-                                yourPetsInGame.get(count).wantsToPlay = true;
+                            for (VirtualPet aPet : yourPetsInGame) {
+                                aPet.thirstLevel++;
+                                aPet.boredomLevel++;
+                                aPet.hungerLevel++;
+                                aPet.wantsToPlay = true;
                             }
-                        } else if (oneOrAll.equalsIgnoreCase("n")) {
+                            System.out.println("Doing nothing...");
+                        }
+                        else if (oneOrAll.equalsIgnoreCase("n")) {
                             System.out.println("Doing nothing...");
                             pet.thirstLevel++;
                             pet.boredomLevel++;
@@ -256,9 +257,12 @@ public class VirtualPetApplication {
                 }
             }
         }
-
     }
-
+    /*TODO
+     *Finish this guess what's wrong method
+     *
+     *
+     * */
 
     public ArrayList<String> guessWhatsWrong(boolean whatIsActuallyWrong) {
         ArrayList<String> guess = new ArrayList<>();
@@ -280,16 +284,3 @@ public class VirtualPetApplication {
     Create methods for all the interactions with the pets
     */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

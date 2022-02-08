@@ -1,5 +1,6 @@
 package virtual_pet;
 
+import java.sql.Array;
 import java.util.*;
 
 public class PetShelter {
@@ -10,6 +11,7 @@ public class PetShelter {
     private int numberOfMonkeys;
     private int numberOfRabbits;
     private int totalNumberOfAnimals;
+    private int idNumber;
     private String petShelterName;
     private ArrayList<VirtualPet> birds = new ArrayList<>();
     private ArrayList<VirtualPet> cats = new ArrayList<>();
@@ -165,7 +167,7 @@ public class PetShelter {
             input.nextLine();
 
             for (int count = 0; count < numberOfAnimals; count += 0) {
-int id = count;
+                int id = count;
                 int nameIndex = rand.nextInt(animalNames.size());
                 String name = animalNames.get(nameIndex);
 
@@ -179,39 +181,45 @@ int id = count;
                 double weight = rand.nextInt(50) + 1;
 
                 if (animalType.equalsIgnoreCase("dog")) {
-                    Dog pet = new Dog(name, animalType, furColor,id, age, weight);
+                    Dog pet = new Dog(name, animalType, furColor, id, age, weight);
                     dogs.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("bird")) {
-                    Bird pet = new Bird(name, animalType, furColor,id, age, weight);
+                }
+                else if (animalType.equalsIgnoreCase("bird")) {
+                    Bird pet = new Bird(name, animalType, furColor, id, age, weight);
                     birds.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("cat")) {
-                    Cat pet = new Cat(name, animalType, furColor,id, age, weight);
+                }
+                else if (animalType.equalsIgnoreCase("cat")) {
+                    Cat pet = new Cat(name, animalType, furColor, id, age, weight);
                     cats.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("fish")) {
-                    Fish pet = new Fish(name, animalType, furColor,id, age, weight);
+                }
+                else if (animalType.equalsIgnoreCase("fish")) {
+                    Fish pet = new Fish(name, animalType, furColor, id, age, weight);
                     fish.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("monkey")) {
-                    Monkey pet = new Monkey(name, animalType, furColor,id, age, weight);
+                }
+                else if (animalType.equalsIgnoreCase("monkey")) {
+                    Monkey pet = new Monkey(name, animalType, furColor, id, age, weight);
                     monkeys.add(pet);
                     petList.add(pet);
                     count++;
-                } else if (animalType.equalsIgnoreCase("rabbit")) {
-                    Rabbit pet = new Rabbit(name, animalType, furColor,id, age, weight);
+                }
+                else if (animalType.equalsIgnoreCase("rabbit")) {
+                    Rabbit pet = new Rabbit(name, animalType, furColor, id, age, weight);
                     rabbits.add(pet);
                     petList.add(pet);
                     count++;
                 }
             }
             return petList;
-        } else if (choice.equalsIgnoreCase("N")) {
+        }
+        else if (choice.equalsIgnoreCase("N")) {
             System.out.println("Enter the name of your pet");
             String name = input.nextLine();
 
@@ -237,20 +245,27 @@ int id = count;
 
             System.out.println("Fur Color?");
             String furColor = input.nextLine();
-            Set<Integer> idNumbers = new HashSet<>();
-            idNumbers.add((int)Math.random());
-            int id = (int)Math.random();
+            Set<Integer> idNumbers = new TreeSet<>();
+            ArrayList<Integer> idList = new ArrayList<>();
 
-            /*TODO
-            *
-            * Find way to prevent animals from assuming already used IDs
-            *
-            * */
-           while(idNumbers.contains(id)){
-               id = (int)Math.random();
-               idNumbers.add(id);
-           }
-            idNumbers.add(id);
+            int idSizeBefore = idNumbers.size();
+
+
+            /*
+             *
+             * This set and array list ensures that numbers are not reused for other pets
+             *
+             * */
+
+            while (idNumbers.size() == idSizeBefore) {
+                idNumbers.add((int) Math.random());
+            }
+
+            for (int idNumber : idNumbers) {
+                idList.add(idNumber);
+            }
+
+            int id = idList.get(idList.size() - 1);
 
             System.out.println("Age?");
             int age = input.nextInt();
@@ -262,19 +277,24 @@ int id = count;
             if (animalType.equalsIgnoreCase("dog")) {
                 Dog pet = new Dog(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
-            } else if (animalType.equalsIgnoreCase("cat")) {
+            }
+            else if (animalType.equalsIgnoreCase("cat")) {
                 Bird pet = new Bird(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
-            } else if (animalType.equalsIgnoreCase("bird")) {
+            }
+            else if (animalType.equalsIgnoreCase("bird")) {
                 Cat pet = new Cat(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
-            } else if (animalType.equalsIgnoreCase("fish")) {
+            }
+            else if (animalType.equalsIgnoreCase("fish")) {
                 Fish pet = new Fish(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
-            } else if (animalType.equalsIgnoreCase("monkey")) {
+            }
+            else if (animalType.equalsIgnoreCase("monkey")) {
                 Monkey pet = new Monkey(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
-            } else if (animalType.equalsIgnoreCase("rabbit")) {
+            }
+            else if (animalType.equalsIgnoreCase("rabbit")) {
                 Rabbit pet = new Rabbit(name, animalType, furColor, id, age, weight);
                 petList.add(pet);
             }
@@ -284,13 +304,11 @@ int id = count;
     }
 
     //TODO Finish admit to shelter
-    public void admitToShelter(VirtualPet petBeingGivenToShelter, ArrayList<VirtualPet> pets ) {
+    public void admitToShelter(VirtualPet petBeingGivenToShelter, ArrayList<VirtualPet> pets) {
         System.out.println("Oh hi there! No need to worry about a thing! We will take great care of it!");
         pets.add(petBeingGivenToShelter);
         if (petBeingGivenToShelter.getAnimalType().equals("bird")) {
             birds.add(petBeingGivenToShelter);
-
-
         }
         if (petBeingGivenToShelter.getAnimalType().equals("cat")) {
             cats.add(petBeingGivenToShelter);
@@ -331,84 +349,95 @@ int id = count;
             int decision = input.nextInt();
             input.nextLine();
             if (decision == 0) {
-                wantsToStay=false;
-            } else if (decision == 1) {
+                wantsToStay = false;
+            }
+            else if (decision == 1) {
                 System.out.println("Here are our birds!");
 
-                String animalGreeting =  birds.get(rand.nextInt(birds.size())).greeting();
+                String animalGreeting = birds.get(rand.nextInt(birds.size())).greeting();
                 System.out.println(animalGreeting);
                 System.out.println("Do you want to take this one home?");
                 System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
                 decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                    petBeingAdopted= birds.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = birds.get(0);
+                    wantsToStay = false;
 
                 }
 
-            } else if (decision == 2) {
+            }
+            else if (decision == 2) {
                 System.out.println("Here are our cats!");
                 String animalGreeting = cats.get(rand.nextInt(cats.size())).greeting();
                 System.out.println(animalGreeting);
                 System.out.println("Do you want to take this one home?");
-                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                    petBeingAdopted= cats.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = cats.get(0);
+                    wantsToStay = false;
                 }
 
-            } else if (decision == 3) {
+            }
+            else if (decision == 3) {
                 System.out.println("Here are our dogs!");
                 String animalGreeting = dogs.get(rand.nextInt(dogs.size())).greeting();
                 System.out.println(animalGreeting);
                 System.out.println("Do you want to take this one home?");
-                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                    petBeingAdopted= dogs.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = dogs.get(0);
+                    wantsToStay = false;
                 }
 
-            } else if (decision == 4) {
+            }
+            else if (decision == 4) {
                 System.out.println("Here are our fish!");
                 String animalGreeting = fish.get(rand.nextInt(fish.size())).greeting();
                 System.out.println(animalGreeting);
                 System.out.println("Do you want to take this one home?");
-                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                    petBeingAdopted= fish.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = fish.get(0);
+                    wantsToStay = false;
                 }
 
-            } else if (decision == 5) {
+            }
+            else if (decision == 5) {
                 System.out.println("Here are our monkeys!");
                 String animalGreeting = monkeys.get(rand.nextInt(monkeys.size())).greeting();
                 System.out.println(animalGreeting);
 
                 System.out.println("Do you want to take this one home?");
-                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                    petBeingAdopted= monkeys.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = monkeys.get(0);
+                    wantsToStay = false;
                 }
 
 
-            } else if (decision == 6) {
+            }
+            else if (decision == 6) {
                 System.out.println("Here are our rabbits!");
                 String animalGreeting = rabbits.get(rand.nextInt(rabbits.size())).greeting();
                 System.out.println(animalGreeting);
 
 
                 System.out.println("Do you want to take this one home?");
-                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");                decision = input.nextInt();
+                System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
+                decision = input.nextInt();
                 input.nextLine();
-                if(decision==1){
-                   petBeingAdopted= rabbits.get(0);
-                    wantsToStay=false;
+                if (decision == 1) {
+                    petBeingAdopted = rabbits.get(0);
+                    wantsToStay = false;
                 }
 
             }
