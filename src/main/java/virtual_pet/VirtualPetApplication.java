@@ -22,6 +22,8 @@ public class VirtualPetApplication {
         */
         ArrayList<VirtualPet> pets = thePetShelter.petRoster();
         ArrayList<VirtualPet> yourPetsInGame = new ArrayList<>();
+        ArrayList<VirtualOrganicPet> yourOrganicPetsInGame = new ArrayList<>();
+        ArrayList<VirtualRobotPet> yourRobotPetsInGame = new ArrayList<>();
         VirtualPet pet = pets.get(rand.nextInt(pets.size()));
 
 /*
@@ -81,6 +83,14 @@ public class VirtualPetApplication {
 */
                 VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
                 yourPetsInGame.add(adoptedPet);
+                if(adoptedPet.getIsOrganic()){
+                    yourOrganicPetsInGame.add((VirtualOrganicPet) adoptedPet);
+                }
+                else if(!adoptedPet.getIsOrganic()){
+                    yourRobotPetsInGame.add((VirtualRobotPet) adoptedPet);
+                }
+
+
             }
             else if (choice == 2) {
                 System.out.println("No need to worry about a thing. All animals are our family! ^_^");
@@ -139,7 +149,7 @@ public class VirtualPetApplication {
 
                     }
                     else {
-                        for (VirtualPet myPet : yourPetsInGame) {
+                        for (VirtualOrganicPet myPet : yourOrganicPetsInGame) {
                             myPet.tick();
                         }
                         String stats = ((VirtualOrganicPet)pet).checkup();
@@ -157,8 +167,9 @@ public class VirtualPetApplication {
                         Create an array of action steps to interact with the animal
                          */
                         while (action.equalsIgnoreCase("help")) {
-                            System.out.println("D for doctor.\n P for Play.\n W for water. \n F for food.\n N for nothing.");
+                            System.out.println("1 for doctor.\n 2 for Play.\n 3 for water. \n 4 for food.\n N for nothing.");
                             action = input.nextLine();
+
                         }
                         System.out.println("Do you want this action to affect all pets?");
                         System.out.println("Type 'Y' for yes or 'N' for no.");
@@ -168,7 +179,7 @@ public class VirtualPetApplication {
                         if (action.equalsIgnoreCase("D")) {
 
                             if (oneOrAll.equalsIgnoreCase("y")) {
-                                for (VirtualPet aPet : yourPetsInGame) {
+                                for (VirtualPet aPet : yourOrganicPetsInGame) {
 
                                     ((VirtualOrganicPet)aPet).thirstLevel = 0;
                                     ((VirtualOrganicPet)aPet).boredomLevel = 0;
@@ -195,7 +206,7 @@ public class VirtualPetApplication {
                         else if (action.equalsIgnoreCase("P")) {
 
                             if (oneOrAll.equalsIgnoreCase("y")) {
-                                for (VirtualPet aPet : yourPetsInGame) {
+                                for (VirtualPet aPet : yourOrganicPetsInGame) {
 
                                     ((VirtualOrganicPet)aPet).thirstLevel++;
                                     ((VirtualOrganicPet)aPet).boredomLevel--;
@@ -215,7 +226,7 @@ public class VirtualPetApplication {
                         }
                         else if (action.equalsIgnoreCase("W")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
-                                for (VirtualPet aPet : yourPetsInGame) {
+                                for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel = 0;
                                     ((VirtualOrganicPet)aPet).wasteLevel++;
                                 }
@@ -229,7 +240,7 @@ public class VirtualPetApplication {
                         }
                         else if (action.equalsIgnoreCase("F")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
-                                for (VirtualPet aPet : yourPetsInGame) {
+                                for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel++;
                                     ((VirtualOrganicPet)aPet).hungerLevel--;
                                     ((VirtualOrganicPet)aPet).wasteLevel++;
@@ -245,7 +256,7 @@ public class VirtualPetApplication {
                         }
                         else if (action.equalsIgnoreCase("N")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
-                                for (VirtualPet aPet : yourPetsInGame) {
+                                for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel++;
                                     ((VirtualOrganicPet)aPet).boredomLevel++;
                                     ((VirtualOrganicPet)aPet).hungerLevel++;
@@ -265,8 +276,132 @@ public class VirtualPetApplication {
                 }
                 /*TODO
                 *  Finish robot pet interaction*/
-                else if (!pet.getIsOrganic()) {
+                else if (!pet.getIsOrganic()){
 
+
+                    if ((((VirtualRobotPet) pet).getOilLevel() == 0 || ((VirtualRobotPet) pet).getBatteryLevel() == 0)) {
+                        petDies(pet);
+                        ((VirtualRobotPet) pet).isAlive = false;
+
+                        /*TODO
+                        * Send robot to get the help it needs after 'dying'...
+                        *
+                        * And where does the tick method call below go?
+                        * */
+                    }
+                    else {
+                        for (VirtualRobotPet myPet : yourRobotPetsInGame) {
+                            System.out.println(myPet.tick());
+                        }
+                        String stats = ((VirtualRobotPet)pet).checkup();
+                        System.out.println(stats);
+                        ArrayList<String> interactionOptions = new ArrayList<>();
+                        interactionOptions.add("1");
+                        interactionOptions.add("2");
+                        interactionOptions.add("3");
+                        interactionOptions.add("4");
+                        interactionOptions.add("N");
+                        System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
+                        String action = input.nextLine();
+
+                        /* TODO
+                        Create an array of action steps to interact with the animal
+                         */
+                        while (action.equalsIgnoreCase("help") && !interactionOptions.contains(action)) {
+                            System.out.println("1 for repair.\n 2 for Play.\n 3 for oil. \n 4 for charging.\n N for nothing.");
+                            action = input.nextLine();
+                        }
+
+                        System.out.println("Do you want this action to affect all pets?");
+                        String oneOrAll = "";
+                        while(!oneOrAll.equalsIgnoreCase("Y") && !oneOrAll.equalsIgnoreCase("N")) {
+                            System.out.println("Type 'Y' for yes or 'N' for no.");
+                            oneOrAll =input.nextLine();
+                        }
+
+
+                        if (action.equalsIgnoreCase("1")) {
+
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourRobotPetsInGame) {
+
+
+                                    ((VirtualRobotPet)aPet).oilLevel = 5;
+                                    ((VirtualRobotPet)aPet).batteryLevel = 5;
+
+                                }
+                                System.out.println("All pets are healed!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualRobotPet)pet).oilLevel = 5;
+                                ((VirtualRobotPet)pet).batteryLevel= 5;;
+
+                            /* TODO
+                            Create a method for going to the doctor
+                            String animalTalks = pet.talking();
+                            System.out.println(animalTalks);
+                            */
+
+                            }
+                            System.out.println("Your pet has been healed!");
+
+                        }
+                        else if (action.equalsIgnoreCase("2")) {
+
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourRobotPetsInGame) {
+
+                                    ((VirtualRobotPet)aPet).oilLevel-=1;
+                                    ((VirtualRobotPet)aPet).batteryLevel-=1;;
+                                }
+                                System.out.println("All robots are playing!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualRobotPet)pet).oilLevel-=1;
+                                ((VirtualRobotPet)pet).batteryLevel-=1;
+
+                                System.out.println("Robot is playing");
+                            }
+                        }
+                        else if (action.equalsIgnoreCase("3")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourRobotPetsInGame) {
+                                    ((VirtualRobotPet)aPet).oilLevel = 5;
+
+                                }
+                                System.out.println("All robots have been \"oiled\"!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                ((VirtualRobotPet)pet).oilLevel = 5;
+
+                                System.out.println("Your robot has been \"oiled\"!");
+                            }
+                        }
+                        else if (action.equalsIgnoreCase("4")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+                                for (VirtualPet aPet : yourRobotPetsInGame) {
+
+                                    ((VirtualRobotPet)aPet).batteryLevel= 5;;
+                                }
+                                System.out.println("All robots have been charged!");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+
+                                ((VirtualRobotPet)pet).batteryLevel= 5;;
+                                System.out.println("Your robot has been charged!");
+                            }
+                        }
+                        else if (action.equalsIgnoreCase("N")) {
+                            if (oneOrAll.equalsIgnoreCase("y")) {
+
+                                System.out.println("Doing nothing...");
+                            }
+                            else if (oneOrAll.equalsIgnoreCase("n")) {
+                                System.out.println("Doing nothing...");
+
+                            }
+                        }
+                    }
                 }
             }
         }

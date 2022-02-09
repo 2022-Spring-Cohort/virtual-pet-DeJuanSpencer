@@ -50,7 +50,6 @@ public abstract class VirtualPet {
         return weight;
     }
 
-    public void tick() {
-    }
+
 }
 

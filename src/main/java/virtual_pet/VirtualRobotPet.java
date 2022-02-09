@@ -4,12 +4,13 @@ public abstract class VirtualRobotPet extends VirtualPet {
     private String name;
     private final String animalType;
     private final boolean isOrganic = false;
+    public boolean isAlive = true;
     private final String color;
     private final int modelYear;
     private final double weight;
     public boolean needsCharging = false;
     boolean needsOil = false;
-    private int batteryLevel;
+    public int batteryLevel;
     public int oilLevel = 5;
 
 
@@ -38,6 +39,18 @@ public abstract class VirtualRobotPet extends VirtualPet {
     public abstract String getLocation();
 
 
+    public String tick() {
+        String concernsToAddress = "";
+        if (getOilLevel() < 3) {
+            needsOil = true;
+            concernsToAddress+="Robot needs oil.\n";
+        }
+        if (getBatteryLevel() < 3) {
+            needsCharging = true;
+            concernsToAddress+="Robot needs charging.\n";
+        }
+        return concernsToAddress;
+    }
     @Override
     public String getName() {
         return name;
