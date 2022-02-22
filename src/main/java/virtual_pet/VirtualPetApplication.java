@@ -84,10 +84,10 @@ public class VirtualPetApplication {
                 VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
                 yourPetsInGame.add(adoptedPet);
 
-                if(adoptedPet.getIsOrganic()){
+                if (adoptedPet.getIsOrganic()) {
                     yourOrganicPetsInGame.add((VirtualOrganicPet) adoptedPet);
                 }
-                else if(!adoptedPet.getIsOrganic()) {
+                else if (!adoptedPet.getIsOrganic()) {
                     yourRobotPetsInGame.add((VirtualRobotPet) adoptedPet);
                 }
             }
@@ -141,7 +141,7 @@ public class VirtualPetApplication {
                         for (VirtualOrganicPet myPet : yourOrganicPetsInGame) {
                             myPet.tick();
                         }
-                        String stats = ((VirtualOrganicPet)pet).checkup();
+                        String stats = ((VirtualOrganicPet) pet).checkup();
                         System.out.println(stats);
                         ArrayList<String> interactionOptions = new ArrayList<>();
                         interactionOptions.add("1");
@@ -164,24 +164,23 @@ public class VirtualPetApplication {
                         System.out.println("Type 'Y' for yes or 'N' for no.");
                         String oneOrAll = input.nextLine();
 
-
                         if (action.equalsIgnoreCase("1")) {
 
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
 
-                                    ((VirtualOrganicPet)aPet).thirstLevel = 0;
-                                    ((VirtualOrganicPet)aPet).boredomLevel = 0;
-                                    ((VirtualOrganicPet)aPet).hungerLevel = 0;
-                                    ((VirtualOrganicPet)aPet).wantsToPlay = false;
+                                    ((VirtualOrganicPet) aPet).thirstLevel = 0;
+                                    ((VirtualOrganicPet) aPet).boredomLevel = 0;
+                                    ((VirtualOrganicPet) aPet).hungerLevel = 0;
+                                    ((VirtualOrganicPet) aPet).wantsToPlay = false;
                                 }
                                 System.out.println("All pets are healed!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualOrganicPet)pet).thirstLevel = 0;
-                                ((VirtualOrganicPet)pet).boredomLevel = 0;
-                                ((VirtualOrganicPet)pet).hungerLevel = 0;
-                                ((VirtualOrganicPet)pet).wantsToPlay = false;
+                                ((VirtualOrganicPet) pet).thirstLevel = 0;
+                                ((VirtualOrganicPet) pet).boredomLevel = 0;
+                                ((VirtualOrganicPet) pet).hungerLevel = 0;
+                                ((VirtualOrganicPet) pet).wantsToPlay = false;
                             /* TODO
                             Create a method for going to the doctor
                             String animalTalks = pet.talking();
@@ -197,75 +196,75 @@ public class VirtualPetApplication {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
 
-                                    ((VirtualOrganicPet)aPet).thirstLevel++;
-                                    ((VirtualOrganicPet)aPet).boredomLevel--;
-                                    ((VirtualOrganicPet)aPet).hungerLevel++;
-                                    ((VirtualOrganicPet)aPet).wantsToPlay = false;
+                                    ((VirtualOrganicPet) aPet).thirstLevel++;
+                                    ((VirtualOrganicPet) aPet).boredomLevel--;
+                                    ((VirtualOrganicPet) aPet).hungerLevel++;
+                                    ((VirtualOrganicPet) aPet).wantsToPlay = false;
                                 }
                                 System.out.println("All pets are playing!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualOrganicPet)pet).thirstLevel++;
-                                ((VirtualOrganicPet)pet).boredomLevel--;
-                                ((VirtualOrganicPet)pet).hungerLevel++;
-                                ((VirtualOrganicPet)pet).wantsToPlay = false;
-                                String petIsplaying = ((VirtualOrganicPet)pet).play();
+                                ((VirtualOrganicPet) pet).thirstLevel++;
+                                ((VirtualOrganicPet) pet).boredomLevel--;
+                                ((VirtualOrganicPet) pet).hungerLevel++;
+                                ((VirtualOrganicPet) pet).wantsToPlay = false;
+                                String petIsplaying = ((VirtualOrganicPet) pet).play();
                                 System.out.println(petIsplaying);
                             }
                         }
                         else if (action.equalsIgnoreCase("3")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
-                                    ((VirtualOrganicPet)aPet).thirstLevel = 0;
-                                    ((VirtualOrganicPet)aPet).wasteLevel++;
+                                    ((VirtualOrganicPet) aPet).thirstLevel = 0;
+                                    ((VirtualOrganicPet) aPet).wasteLevel++;
                                 }
                                 System.out.println("All pets have been \"watered\"!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualOrganicPet)pet).thirstLevel = 0;
-                                ((VirtualOrganicPet)pet).wasteLevel++;
+                                ((VirtualOrganicPet) pet).thirstLevel = 0;
+                                ((VirtualOrganicPet) pet).wasteLevel++;
                                 System.out.println("Your pet has been \"watered\"!");
                             }
                         }
                         else if (action.equalsIgnoreCase("4")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
-                                    ((VirtualOrganicPet)aPet).thirstLevel++;
-                                    ((VirtualOrganicPet)aPet).hungerLevel--;
-                                    ((VirtualOrganicPet)aPet).wasteLevel++;
+                                    ((VirtualOrganicPet) aPet).thirstLevel++;
+                                    ((VirtualOrganicPet) aPet).hungerLevel--;
+                                    ((VirtualOrganicPet) aPet).wasteLevel++;
                                 }
                                 System.out.println("All pets have been fed!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualOrganicPet)pet).thirstLevel++;
-                                ((VirtualOrganicPet)pet).hungerLevel--;
-                                ((VirtualOrganicPet)pet).wasteLevel++;
+                                ((VirtualOrganicPet) pet).thirstLevel++;
+                                ((VirtualOrganicPet) pet).hungerLevel--;
+                                ((VirtualOrganicPet) pet).wasteLevel++;
                                 System.out.println("Your pet has been fed!");
                             }
                         }
                         else if (action.equalsIgnoreCase("5")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
-                                    ((VirtualOrganicPet)aPet).thirstLevel++;
-                                    ((VirtualOrganicPet)aPet).boredomLevel++;
-                                    ((VirtualOrganicPet)aPet).hungerLevel++;
-                                    ((VirtualOrganicPet)aPet).wantsToPlay = true;
+                                    ((VirtualOrganicPet) aPet).thirstLevel++;
+                                    ((VirtualOrganicPet) aPet).boredomLevel++;
+                                    ((VirtualOrganicPet) aPet).hungerLevel++;
+                                    ((VirtualOrganicPet) aPet).wantsToPlay = true;
                                 }
                                 System.out.println("Doing nothing...");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
                                 System.out.println("Doing nothing...");
-                                ((VirtualOrganicPet)pet).thirstLevel++;
-                                ((VirtualOrganicPet)pet).boredomLevel++;
-                                ((VirtualOrganicPet)pet).hungerLevel++;
-                                ((VirtualOrganicPet)pet).wantsToPlay = true;
+                                ((VirtualOrganicPet) pet).thirstLevel++;
+                                ((VirtualOrganicPet) pet).boredomLevel++;
+                                ((VirtualOrganicPet) pet).hungerLevel++;
+                                ((VirtualOrganicPet) pet).wantsToPlay = true;
                             }
                         }
                     }
                 }
                 /*TODO
-                *  Finish robot pet interaction*/
-                else if (!pet.getIsOrganic()){
+                 *  Finish robot pet interaction*/
+                else if (!pet.getIsOrganic()) {
 
 
                     if ((((VirtualRobotPet) pet).getOilLevel() == 0 || ((VirtualRobotPet) pet).getBatteryLevel() == 0)) {
@@ -273,16 +272,16 @@ public class VirtualPetApplication {
                         ((VirtualRobotPet) pet).isAlive = false;
 
                         /*TODO
-                        * Send robot to get the help it needs after 'dying'...
-                        *
-                        * And where does the tick method call below go?
-                        * */
+                         * Send robot to get the help it needs after 'dying'...
+                         *
+                         * And where does the tick method call below go?
+                         * */
                     }
                     else {
                         for (VirtualRobotPet myPet : yourRobotPetsInGame) {
                             System.out.println(myPet.tick());
                         }
-                        String stats = ((VirtualRobotPet)pet).checkup();
+                        String stats = ((VirtualRobotPet) pet).checkup();
                         System.out.println(stats);
                         ArrayList<String> interactionOptions = new ArrayList<>();
                         interactionOptions.add("1");
@@ -297,16 +296,17 @@ public class VirtualPetApplication {
                         /* TODO
                         Create an array of action steps to interact with the animal
                          */
-                        while (action.equalsIgnoreCase("help") && !interactionOptions.contains(action)) {
+                        while (action.equalsIgnoreCase("help")) {
                             System.out.println("1 for repair.\n 2 for Play.\n 3 for oil. \n 4 for charging.\n 5 for nothing.");
                             action = input.nextLine();
                         }
 
+
                         System.out.println("Do you want this action to affect all pets?");
                         String oneOrAll = "";
-                        while(!oneOrAll.equalsIgnoreCase("Y") && !oneOrAll.equalsIgnoreCase("N")) {
+                        while (!oneOrAll.equalsIgnoreCase("Y") && !oneOrAll.equalsIgnoreCase("N")) {
                             System.out.println("Type 'Y' for yes or 'N' for no.");
-                            oneOrAll =input.nextLine();
+                            oneOrAll = input.nextLine();
                         }
 
 
@@ -316,15 +316,16 @@ public class VirtualPetApplication {
                                 for (VirtualPet aPet : yourRobotPetsInGame) {
 
 
-                                    ((VirtualRobotPet)aPet).oilLevel = 5;
-                                    ((VirtualRobotPet)aPet).batteryLevel = 5;
+                                    ((VirtualRobotPet) aPet).oilLevel = 5;
+                                    ((VirtualRobotPet) aPet).batteryLevel = 5;
 
                                 }
                                 System.out.println("All pets are healed!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualRobotPet)pet).oilLevel = 5;
-                                ((VirtualRobotPet)pet).batteryLevel= 5;;
+                                ((VirtualRobotPet) pet).oilLevel = 5;
+                                ((VirtualRobotPet) pet).batteryLevel = 5;
+                                ;
 
                             /* TODO
                             Create a method for going to the doctor
@@ -341,14 +342,15 @@ public class VirtualPetApplication {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourRobotPetsInGame) {
 
-                                    ((VirtualRobotPet)aPet).oilLevel-=1;
-                                    ((VirtualRobotPet)aPet).batteryLevel-=1;;
+                                    ((VirtualRobotPet) aPet).oilLevel -= 1;
+                                    ((VirtualRobotPet) aPet).batteryLevel -= 1;
+                                    ;
                                 }
                                 System.out.println("All robots are playing!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualRobotPet)pet).oilLevel-=1;
-                                ((VirtualRobotPet)pet).batteryLevel-=1;
+                                ((VirtualRobotPet) pet).oilLevel -= 1;
+                                ((VirtualRobotPet) pet).batteryLevel -= 1;
 
                                 System.out.println("Robot is playing");
                             }
@@ -356,13 +358,13 @@ public class VirtualPetApplication {
                         else if (action.equalsIgnoreCase("3")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourRobotPetsInGame) {
-                                    ((VirtualRobotPet)aPet).oilLevel = 5;
+                                    ((VirtualRobotPet) aPet).oilLevel = 5;
 
                                 }
                                 System.out.println("All robots have been \"oiled\"!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
-                                ((VirtualRobotPet)pet).oilLevel = 5;
+                                ((VirtualRobotPet) pet).oilLevel = 5;
 
                                 System.out.println("Your robot has been \"oiled\"!");
                             }
@@ -371,13 +373,15 @@ public class VirtualPetApplication {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourRobotPetsInGame) {
 
-                                    ((VirtualRobotPet)aPet).batteryLevel= 5;;
+                                    ((VirtualRobotPet) aPet).batteryLevel = 5;
+                                    ;
                                 }
                                 System.out.println("All robots have been charged!");
                             }
                             else if (oneOrAll.equalsIgnoreCase("n")) {
 
-                                ((VirtualRobotPet)pet).batteryLevel= 5;;
+                                ((VirtualRobotPet) pet).batteryLevel = 5;
+                                ;
                                 System.out.println("Your robot has been charged!");
                             }
                         }

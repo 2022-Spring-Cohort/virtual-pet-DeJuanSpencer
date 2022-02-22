@@ -369,15 +369,13 @@ public class PetShelter {
                 System.out.println("Press 4 if you want to look at the fish");
                 System.out.println("Press 5 if you want to look at the monkeys");
                 System.out.println("Press 6 if you want to look at the rabbits");
-                System.out.println("Or press 0 if you want to leave!");
-                while (decision != 1 && decision != 2 && decision != 3 && decision != 4 && decision != 5 && decision != 6 && decision != 0) {
+
+                while (decision != 1 && decision != 2 && decision != 3 && decision != 4 && decision != 5 && decision != 6) {
                     decision = input.nextInt();
                     input.nextLine();
                 }
-                if (decision == 0) {
-                    wantsToStay = false;
-                }
-                else if (decision == 1) {
+
+                 if (decision == 1) {
                     System.out.println("Here are our birds!");
                     String animalGreeting = birdRobots.get(rand.nextInt(birdRobots.size())).greeting();
                     System.out.println(animalGreeting);
@@ -471,14 +469,15 @@ public class PetShelter {
                 System.out.println("Press 4 if you want to look at the fish");
                 System.out.println("Press 5 if you want to look at the monkeys");
                 System.out.println("Press 6 if you want to look at the rabbits");
-                System.out.println("Or press 0 if you want to leave!");
 
-                int decision = input.nextInt();
-                input.nextLine();
-                if (decision == 0) {
-                    wantsToStay = false;
+                int decision =-1;
+
+                while (decision != 1 && decision != 2 && decision != 3 && decision != 4 && decision != 5 && decision != 6) {
+                    decision = input.nextInt();
+                    input.nextLine();
                 }
-                else if (decision == 1) {
+
+                if (decision == 1) {
                     System.out.println("Here are our birds!");
 
 
@@ -570,6 +569,7 @@ public class PetShelter {
 
             if (!wantsToStay) {
                 System.out.println("Thanks for stopping by!");
+
 
             }
 

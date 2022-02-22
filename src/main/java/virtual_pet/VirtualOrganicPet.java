@@ -40,7 +40,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
 
 
     public int getHungerLevel() {
-        for(int i =0;i<hungerLevel;i++){
+        for (int i = 0; i < hungerLevel; i++) {
             System.out.println("-");
         }
         return hungerLevel;
@@ -51,7 +51,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public int getThirstLevel() {
-        for(int i =0;i<thirstLevel;i++){
+        for (int i = 0; i < thirstLevel; i++) {
             System.out.println("-");
         }
 
@@ -59,7 +59,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public int getBoredomLevel() {
-        for(int i =0;i<boredomLevel;i++){
+        for (int i = 0; i < boredomLevel; i++) {
             System.out.println("-");
         }
         return boredomLevel;
@@ -96,7 +96,6 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     public abstract String getLocation();
 
 
-
     public String getName() {
         return name;
     }
@@ -125,6 +124,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
         boolean animalNeedsSomething = false;
         if (hungerLevel >= 3) {
             animalNeedsSomething = true;
+            this.isHungry = true;
             System.out.println("You should consider giving it food.");
             talking();
         }
@@ -132,9 +132,9 @@ public abstract class VirtualOrganicPet extends VirtualPet {
         if (wasteLevel >= 3) {
             animalNeedsSomething = true;
             talking();
-            if (wasteLevel == 5) {
+            if (wasteLevel ==5 ) {
                 System.out.println(soiledCage());
-                wasteLevel=0;
+                wasteLevel = 0;
                 System.out.println("You now must clean the animal's living quarters");
             }
         }
@@ -152,15 +152,14 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public boolean hunger() {
-        if (hungerLevel >= 5) {
-
+        if (hungerLevel >= 3) {
             isHungry = true;
         }
         return isHungry;
     }
 
     public boolean thirst() {
-        if (thirstLevel >= 5) {
+        if (thirstLevel >= 3) {
             System.out.println("You should consider giving it water.");
             isThirsty = true;
         }
