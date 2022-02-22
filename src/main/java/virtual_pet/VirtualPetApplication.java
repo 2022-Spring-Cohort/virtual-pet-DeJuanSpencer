@@ -144,11 +144,12 @@ public class VirtualPetApplication {
                         String stats = ((VirtualOrganicPet)pet).checkup();
                         System.out.println(stats);
                         ArrayList<String> interactionOptions = new ArrayList<>();
-                        interactionOptions.add("D");
-                        interactionOptions.add("P");
-                        interactionOptions.add("W");
-                        interactionOptions.add("F");
-                        interactionOptions.add("N");
+                        interactionOptions.add("1");
+                        interactionOptions.add("2");
+                        interactionOptions.add("3");
+                        interactionOptions.add("4");
+                        interactionOptions.add("5");
+                        interactionOptions.add("help");
                         System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
                         String action = input.nextLine();
 
@@ -158,7 +159,6 @@ public class VirtualPetApplication {
                         while (action.equalsIgnoreCase("help")) {
                             System.out.println("1 for doctor.\n 2 for Play.\n 3 for water. \n 4 for food.\n 5 for nothing.");
                             action = input.nextLine();
-
                         }
                         System.out.println("Do you want this action to affect all pets?");
                         System.out.println("Type 'Y' for yes or 'N' for no.");
@@ -290,6 +290,7 @@ public class VirtualPetApplication {
                         interactionOptions.add("3");
                         interactionOptions.add("4");
                         interactionOptions.add("5");
+                        interactionOptions.add("help");
                         System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
                         String action = input.nextLine();
 

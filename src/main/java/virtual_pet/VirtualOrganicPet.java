@@ -152,7 +152,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public boolean hunger() {
-        if (hungerLevel >= 3) {
+        if (hungerLevel >= 5) {
 
             isHungry = true;
         }
@@ -160,7 +160,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public boolean thirst() {
-        if (thirstLevel >= 3) {
+        if (thirstLevel >= 5) {
             System.out.println("You should consider giving it water.");
             isThirsty = true;
         }

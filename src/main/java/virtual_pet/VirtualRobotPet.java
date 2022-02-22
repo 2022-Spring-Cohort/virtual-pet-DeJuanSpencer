@@ -10,8 +10,8 @@ public abstract class VirtualRobotPet extends VirtualPet {
     private final double weight;
     public boolean needsCharging = false;
     boolean needsOil = false;
-    public int batteryLevel;
-    public int oilLevel = 5;
+    public int batteryLevel=10;
+    public int oilLevel = 10;
 
 
     public VirtualRobotPet(String name, String animalType, int id, double weight, String color, int modelYear) {
@@ -102,7 +102,7 @@ public abstract class VirtualRobotPet extends VirtualPet {
 
     public String checkup() {
         String petStats = "";
-        petStats += "Oil-level: " + getOilLevel();
+        petStats += "Oil-level: " + getOilLevel()+"\n";
         petStats += "Battery-level:" + getBatteryLevel();
         return petStats;
     }
