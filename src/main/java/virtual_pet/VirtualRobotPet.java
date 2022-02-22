@@ -3,7 +3,7 @@ package virtual_pet;
 public abstract class VirtualRobotPet extends VirtualPet {
     private String name;
     private final String animalType;
-    private final boolean isOrganic = false;
+
     public boolean isAlive = true;
     private final String color;
     private final int modelYear;
@@ -61,9 +61,7 @@ public abstract class VirtualRobotPet extends VirtualPet {
         return animalType;
     }
 
-    public boolean isOrganic() {
-        return isOrganic;
-    }
+
 
     public String getColor() {
         return color;
@@ -115,5 +113,14 @@ public abstract class VirtualRobotPet extends VirtualPet {
         hello += "I am " + getModelYear() + " years old. ";
         hello += "I am " + getWeight() + " lbs. ";
         return hello;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    @Override
+    public boolean getIsOrganic() {
+        return false;
     }
 }

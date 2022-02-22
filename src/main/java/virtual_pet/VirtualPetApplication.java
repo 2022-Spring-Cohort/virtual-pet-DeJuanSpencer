@@ -83,13 +83,14 @@ public class VirtualPetApplication {
 */
                 VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
                 yourPetsInGame.add(adoptedPet);
+
+
                 if(adoptedPet.getIsOrganic()){
                     yourOrganicPetsInGame.add((VirtualOrganicPet) adoptedPet);
                 }
-                else if(!adoptedPet.getIsOrganic()){
+                else if(!adoptedPet.getIsOrganic()) {
                     yourRobotPetsInGame.add((VirtualRobotPet) adoptedPet);
                 }
-
 
             }
             else if (choice == 2) {

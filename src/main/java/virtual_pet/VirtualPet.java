@@ -3,7 +3,7 @@ package virtual_pet;
 public abstract class VirtualPet {
     private String name;
     private String animalType;
-    private boolean isOrganic;
+
     private String furColor;
     private int age;
     private int id;
@@ -21,7 +21,7 @@ public abstract class VirtualPet {
     }
 
 
-
+    public abstract boolean getIsOrganic();
     public abstract String ASCIIArt();
 
     public abstract String talking();
@@ -38,9 +38,7 @@ public abstract class VirtualPet {
         return animalType;
     }
 
-    public boolean getIsOrganic() {
-        return isOrganic;
-    }
+
 
     public int getID() {
         return id;

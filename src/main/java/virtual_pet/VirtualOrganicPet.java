@@ -4,7 +4,6 @@ public abstract class VirtualOrganicPet extends VirtualPet {
 
     private String name;
     private final String animalType;
-    private final boolean isOrganic = true;
     private final String furColor;
     private int age;
     private final int id;
@@ -172,6 +171,19 @@ public abstract class VirtualOrganicPet extends VirtualPet {
         result += this.potty();
         this.wasteLevel = 0;
         return result;
+    }
+
+    @Override
+    public boolean getIsOrganic() {
+        return true;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public boolean isHungry() {
+        return isHungry;
     }
 }
 
