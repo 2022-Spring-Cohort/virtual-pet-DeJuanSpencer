@@ -84,18 +84,15 @@ public class VirtualPetApplication {
                 VirtualPet adoptedPet = thePetShelter.getFromShelter(pets);
                 yourPetsInGame.add(adoptedPet);
 
-
                 if(adoptedPet.getIsOrganic()){
                     yourOrganicPetsInGame.add((VirtualOrganicPet) adoptedPet);
                 }
                 else if(!adoptedPet.getIsOrganic()) {
                     yourRobotPetsInGame.add((VirtualRobotPet) adoptedPet);
                 }
-
             }
             else if (choice == 2) {
                 System.out.println("No need to worry about a thing. All animals are our family! ^_^");
-
 
                 if (yourPetsInGame.size() == 1) {
                     System.out.println("Here is your pet! This is your only one... are you sure you want to place them back into the shelter?");
@@ -108,7 +105,6 @@ public class VirtualPetApplication {
                         thePetShelter.admitToShelter(yourPetsInGame.get(0), pets);
                         yourPetsInGame.remove(0);
                     }
-
                 }
                 else if (yourPetsInGame.size() > 1) {
                     for (VirtualPet aPet : yourPetsInGame) {
@@ -128,26 +124,18 @@ public class VirtualPetApplication {
                             }
                         }
                     }
-
                 }
-
             }
 /*          TODO
             This looks a bit off. Consider adjustments
 
 */
             else if (choice == 3 && yourPetsInGame.size() > 0) {
-
                 pet = yourPetsInGame.get(rand.nextInt(yourPetsInGame.size()));
-
-
                 if (pet.getIsOrganic()) {
-
-
                     if ((((VirtualOrganicPet) pet).hungerLevel >= 5 || ((VirtualOrganicPet) pet).thirstLevel >= 5)) {
                         petDies(pet);
                         ((VirtualOrganicPet) pet).isAlive = false;
-
                     }
                     else {
                         for (VirtualOrganicPet myPet : yourOrganicPetsInGame) {
@@ -168,7 +156,7 @@ public class VirtualPetApplication {
                         Create an array of action steps to interact with the animal
                          */
                         while (action.equalsIgnoreCase("help")) {
-                            System.out.println("1 for doctor.\n 2 for Play.\n 3 for water. \n 4 for food.\n N for nothing.");
+                            System.out.println("1 for doctor.\n 2 for Play.\n 3 for water. \n 4 for food.\n 5 for nothing.");
                             action = input.nextLine();
 
                         }
@@ -177,7 +165,7 @@ public class VirtualPetApplication {
                         String oneOrAll = input.nextLine();
 
 
-                        if (action.equalsIgnoreCase("D")) {
+                        if (action.equalsIgnoreCase("1")) {
 
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
@@ -204,7 +192,7 @@ public class VirtualPetApplication {
                             System.out.println("Your pet has been healed!");
 
                         }
-                        else if (action.equalsIgnoreCase("P")) {
+                        else if (action.equalsIgnoreCase("2")) {
 
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
@@ -225,7 +213,7 @@ public class VirtualPetApplication {
                                 System.out.println(petIsplaying);
                             }
                         }
-                        else if (action.equalsIgnoreCase("W")) {
+                        else if (action.equalsIgnoreCase("3")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel = 0;
@@ -239,7 +227,7 @@ public class VirtualPetApplication {
                                 System.out.println("Your pet has been \"watered\"!");
                             }
                         }
-                        else if (action.equalsIgnoreCase("F")) {
+                        else if (action.equalsIgnoreCase("4")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel++;
@@ -255,7 +243,7 @@ public class VirtualPetApplication {
                                 System.out.println("Your pet has been fed!");
                             }
                         }
-                        else if (action.equalsIgnoreCase("N")) {
+                        else if (action.equalsIgnoreCase("5")) {
                             if (oneOrAll.equalsIgnoreCase("y")) {
                                 for (VirtualPet aPet : yourOrganicPetsInGame) {
                                     ((VirtualOrganicPet)aPet).thirstLevel++;
@@ -301,7 +289,7 @@ public class VirtualPetApplication {
                         interactionOptions.add("2");
                         interactionOptions.add("3");
                         interactionOptions.add("4");
-                        interactionOptions.add("N");
+                        interactionOptions.add("5");
                         System.out.println("Enter something for the pet to do. Type 'help' for some interaction options:");
                         String action = input.nextLine();
 
@@ -309,7 +297,7 @@ public class VirtualPetApplication {
                         Create an array of action steps to interact with the animal
                          */
                         while (action.equalsIgnoreCase("help") && !interactionOptions.contains(action)) {
-                            System.out.println("1 for repair.\n 2 for Play.\n 3 for oil. \n 4 for charging.\n N for nothing.");
+                            System.out.println("1 for repair.\n 2 for Play.\n 3 for oil. \n 4 for charging.\n 5 for nothing.");
                             action = input.nextLine();
                         }
 

@@ -171,10 +171,11 @@ public class PetShelter {
         input.nextLine();
 
         int firstHalf = numberOfAnimals / 2;
-        int secondHalf = numberOfAnimals - firstHalf;
+        int secondHalf = firstHalf;
 
         /*This makes the organic pet lineup*/
-        for (int count = 0; count < firstHalf; count += 0) {
+        int count = 0;
+        while (count < firstHalf) {
             int id = count;
             int nameIndex = rand.nextInt(animalNames.size());
             String name = animalNames.get(nameIndex);
@@ -227,8 +228,8 @@ public class PetShelter {
         }
 
         /*This makes the robot pet lineup*/
-
-        for (int count = 0; count < secondHalf; count += 0) {
+        count = 0;
+        while (count < secondHalf) {
             int id = count;
             int nameIndex = rand.nextInt(animalNames.size());
             String name = animalNames.get(nameIndex);
@@ -246,48 +247,49 @@ public class PetShelter {
             double weight = rand.nextInt(50) + 1;
 
 
-            if (animalType.equalsIgnoreCase("dogRobot")) {
+            if (animalType.equalsIgnoreCase("dog")) {
                 VirtualRobotPet pet = new DogRobot(name, animalType, id, weight, color, modelYear);
                 dogRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
-            else if (animalType.equalsIgnoreCase("birdRobot")) {
+            else if (animalType.equalsIgnoreCase("bird")) {
                 VirtualRobotPet pet = new BirdRobot(name, animalType, id, weight, color, modelYear);
                 birdRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
-            else if (animalType.equalsIgnoreCase("catRobot")) {
+            else if (animalType.equalsIgnoreCase("cat")) {
                 VirtualRobotPet pet = new CatRobot(name, animalType, id, weight, color, modelYear);
                 catRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
-            else if (animalType.equalsIgnoreCase("fishRobot")) {
+            else if (animalType.equalsIgnoreCase("fish")) {
                 VirtualRobotPet pet = new FishRobot(name, animalType, id, weight, color, modelYear);
                 fishRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
-            else if (animalType.equalsIgnoreCase("monkeyRobot")) {
+            else if (animalType.equalsIgnoreCase("monkey")) {
                 VirtualRobotPet pet = new MonkeyRobot(name, animalType, id, weight, color, modelYear);
                 monkeyRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
-            else if (animalType.equalsIgnoreCase("rabbitRobot")) {
+            else if (animalType.equalsIgnoreCase("rabbit")) {
                 VirtualRobotPet pet = new RabbitRobot(name, animalType, id, weight, color, modelYear);
                 rabbitRobots.add(pet);
                 petList.add(pet);
                 count++;
             }
 
-            return petList;
-        }
 
-        return null;
+        }
+        return petList;
     }
+
+
 
     /*TODO
      *
@@ -450,8 +452,6 @@ public class PetShelter {
                     System.out.println("Here are our rabbits!");
                     String animalGreeting = rabbitRobots.get(rand.nextInt(rabbitRobots.size())).greeting();
                     System.out.println(animalGreeting);
-
-
                     System.out.println("Do you want to take this one home?");
                     System.out.println("Press 1 for yes. Press anything else if you're not ready yet...");
                     decision = input.nextInt();
@@ -460,7 +460,6 @@ public class PetShelter {
                         petBeingAdopted = rabbitRobots.get(0);
                         wantsToStay = false;
                     }
-
                 }
             }
             else if (type == 1) {
@@ -492,9 +491,7 @@ public class PetShelter {
                     if (decision == 1) {
                         petBeingAdopted = birds.get(0);
                         wantsToStay = false;
-
                     }
-
                 }
                 else if (decision == 2) {
                     System.out.println("Here are our cats!");
@@ -508,7 +505,6 @@ public class PetShelter {
                         petBeingAdopted = cats.get(0);
                         wantsToStay = false;
                     }
-
                 }
                 else if (decision == 3) {
                     System.out.println("Here are our dogs!");

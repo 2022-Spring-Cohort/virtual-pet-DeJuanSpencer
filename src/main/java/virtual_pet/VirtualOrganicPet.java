@@ -40,6 +40,9 @@ public abstract class VirtualOrganicPet extends VirtualPet {
 
 
     public int getHungerLevel() {
+        for(int i =0;i<hungerLevel;i++){
+            System.out.println("-");
+        }
         return hungerLevel;
     }
 
@@ -48,14 +51,21 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     }
 
     public int getThirstLevel() {
+        for(int i =0;i<thirstLevel;i++){
+            System.out.println("-");
+        }
+
         return thirstLevel;
     }
 
     public int getBoredomLevel() {
+        for(int i =0;i<boredomLevel;i++){
+            System.out.println("-");
+        }
         return boredomLevel;
     }
 
-    public boolean isWantsToPlay() {
+    public boolean wantsToPlay() {
         return wantsToPlay;
     }
 
@@ -63,11 +73,11 @@ public abstract class VirtualOrganicPet extends VirtualPet {
         return wasteLevel;
     }
 
-    public boolean isNeedsToWaste() {
+    public boolean needsToWaste() {
         return needsToWaste;
     }
 
-    public boolean isAnimalNeedsSomething() {
+    public boolean animalNeedsSomething() {
         return animalNeedsSomething;
     }
 
@@ -84,6 +94,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
     public abstract String talking();
 
     public abstract String getLocation();
+
 
 
     public String getName() {
@@ -114,21 +125,27 @@ public abstract class VirtualOrganicPet extends VirtualPet {
         boolean animalNeedsSomething = false;
         if (hungerLevel >= 3) {
             animalNeedsSomething = true;
+            System.out.println("You should consider giving it food.");
             talking();
         }
+
         if (wasteLevel >= 3) {
             animalNeedsSomething = true;
             talking();
             if (wasteLevel == 5) {
                 System.out.println(soiledCage());
+                wasteLevel=0;
+                System.out.println("You now must clean the animal's living quarters");
             }
         }
         if (thirstLevel >= 3) {
             animalNeedsSomething = true;
+            System.out.println("You should consider giving it water.");
             talking();
         }
         if (boredomLevel >= 3) {
             animalNeedsSomething = true;
+            System.out.println("You should consider playing with it.");
             talking();
         }
         return animalNeedsSomething;
@@ -136,7 +153,7 @@ public abstract class VirtualOrganicPet extends VirtualPet {
 
     public boolean hunger() {
         if (hungerLevel >= 3) {
-            System.out.println("You should consider giving it food.");
+
             isHungry = true;
         }
         return isHungry;
